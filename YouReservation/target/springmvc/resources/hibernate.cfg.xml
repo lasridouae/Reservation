@@ -18,7 +18,6 @@
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
 
         <!-- mapping class using annotation -->
-        <mapping class="com.webapp.youcode.model.Place"/>
         <mapping class="com.webapp.youcode.model.Admin"/>
         <mapping class="com.webapp.youcode.model.Reservation"/>
         <mapping class="com.webapp.youcode.model.Users"/>
