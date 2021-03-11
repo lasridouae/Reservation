@@ -4,7 +4,7 @@
 <hibernate-configuration>
 
     <session-factory>
-        <property name="connection.url">jdbc:postgresql://localhost:5432/reservation</property> <!-- BD Mane -->
+        <property name="connection.url">jdbc:postgresql://localhost:5432/testReservation</property> <!-- BD Mane -->
         <property name="connection.driver_class">org.postgresql.Driver</property> <!-- DB Driver -->
         <property name="connection.username">postgres</property> <!-- DB User -->
         <property name="connection.password">1747</property> <!-- DB Password -->
@@ -18,8 +18,8 @@
         <property name="format_sql">true</property> <!-- Show SQL formatted -->
 
         <!-- mapping class using annotation -->
-        <mapping class="com.webapp.youcode.model.Place"/>
         <mapping class="com.webapp.youcode.model.Admin"/>
+        <mapping class="com.webapp.youcode.model.NbrPlace"/>
         <mapping class="com.webapp.youcode.model.Reservation"/>
         <mapping class="com.webapp.youcode.model.Users"/>
         <mapping class="com.webapp.youcode.model.Roles"/>

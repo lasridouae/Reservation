@@ -24,7 +24,7 @@
     <!-- bootstrap -->
     <link href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
     <!-- Vendor CSS Files -->
-    <link href="<c:url value="/resources/style.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/vendor/boxicons/css/boxicons.min.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/vendor/icofont/icofont.min.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/img/homePage.jpg" />" rel="stylesheet">
@@ -43,9 +43,9 @@
     <nav class="nav-menu d-none d-lg-block">
         <ul>
             <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="#about">Reservation</a></li>
-            <li><a href="${pageContext.request.contextPath}/loginPage">Login</a></li>
-            <li><a href="#services">Register</a></li>
+            <li><a href="/">Reservation</a></li>
+            <li><a href="/loginPage">Login</a></li>
+            <li><a href="/registerPage">Register</a></li>
         </ul>
     </nav><!-- .nav-menu -->
 
@@ -80,6 +80,7 @@
 
 
 <!-- Vendor JS Files -->
+
 <link href="<c:url value="/resources/vendor/jquery/jquery.min.js" />" rel="stylesheet">
 <link href="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js" />" rel="stylesheet">
 </body>

@@ -8,7 +8,7 @@ import java.util.Collection;
 public class Roles implements Serializable {
     @Id
     @GeneratedValue
-    private Long roleId;
+    private Long idRole;
     private String roleType;
     @OneToMany(mappedBy = "idUsers")
     private Collection<Users> users;
@@ -21,12 +21,12 @@ public class Roles implements Serializable {
         this.users = users;
     }
 
-    public Long getRoleId() {
-        return roleId;
+    public Long getIdRole() {
+        return idRole;
     }
 
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
+    public void setIdRole(Long roleId) {
+        this.idRole = roleId;
     }
 
     public String getRoleType() {

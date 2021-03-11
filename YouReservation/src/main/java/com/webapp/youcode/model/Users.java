@@ -20,22 +20,22 @@ public class Users implements Serializable {
     private Admin admin;
     @OneToOne (mappedBy = "users")
     private Apprenant apprenant;
-
     @ManyToOne
-    @JoinColumn(name = "id_role", referencedColumnName = "idRole", nullable = false)
+    @JoinColumn(name = "idRole")
     private Roles roles;
 
     public Users() {
     }
 
-    public Users(String nom, String prenom, String email, String password, Roles roles) {
+    public Users( String nom, String prenom, String email, String password, Admin admin, Apprenant apprenant, Roles roles) {
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.password = password;
+        this.admin = admin;
+        this.apprenant = apprenant;
         this.roles = roles;
     }
-
     public Long getIdUsers() {
         return idUsers;
     }
