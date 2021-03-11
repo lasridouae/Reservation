@@ -1,37 +1,34 @@
 package com.webapp.youcode.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Roles {
-    private Long id;
-    private int roleId;
-    private String roleType;
-    private Collection<Users> usersByRoleId;
-
+public class Roles implements Serializable {
     @Id
     @GeneratedValue
-    public Long getId() {
-        return id;
+    private Long roleId;
+    private String roleType;
+    @OneToMany(mappedBy = "idUsers")
+    private Collection<Users> users;
+
+    public Roles() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Roles(String roleType, Collection<Users> users) {
+        this.roleType = roleType;
+        this.users = users;
     }
 
-    @Id
-    @Column(name = "role_id", nullable = false)
-    public int getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Long roleId) {
         this.roleId = roleId;
     }
 
-    @Basic
-    @Column(name = "role_type", nullable = false, length = 50)
     public String getRoleType() {
         return roleType;
     }
@@ -40,32 +37,11 @@ public class Roles {
         this.roleType = roleType;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Roles roles = (Roles) o;
-
-        if (roleId != roles.roleId) return false;
-        if (roleType != null ? !roleType.equals(roles.roleType) : roles.roleType != null) return false;
-
-        return true;
+    public Collection<Users> getUsers() {
+        return users;
     }
 
-    @Override
-    public int hashCode() {
-        int result = roleId;
-        result = 31 * result + (roleType != null ? roleType.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "rolesByRoleId")
-    public Collection<Users> getUsersByRoleId() {
-        return usersByRoleId;
-    }
-
-    public void setUsersByRoleId(Collection<Users> usersByRoleId) {
-        this.usersByRoleId = usersByRoleId;
+    public void setUsers(Collection<Users> users) {
+        this.users = users;
     }
 }
