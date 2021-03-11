@@ -6,46 +6,35 @@ import java.util.Collection;
 
 @Entity
 public class Reservation {
-    private Long id;
-    private int idReservation;
-    private Integer idApprenant;
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long idReservation;
     private Date dateReservation;
     private boolean confirmation;
+    @OneToMany(mappedBy = "reservation")
     private Collection<NbrPlace> nbrPlacetablesByIdReservation;
-    private Apprenant apprenantByIdApprenant;
+    @ManyToOne
+    @JoinColumn(name = "idUsers")
+    private Apprenant apprenant;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
+    public Reservation() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Reservation(Date dateReservation, boolean confirmation, Collection<NbrPlace> nbrPlacetablesByIdReservation, Apprenant apprenant) {
+        this.dateReservation = dateReservation;
+        this.confirmation = confirmation;
+        this.nbrPlacetablesByIdReservation = nbrPlacetablesByIdReservation;
+        this.apprenant = apprenant;
     }
 
-    @Id
-    @Column(name = "id_reservation", nullable = false)
-    public int getIdReservation() {
+    public Long getIdReservation() {
         return idReservation;
     }
 
-    public void setIdReservation(int idReservation) {
+    public void setIdReservation(Long idReservation) {
         this.idReservation = idReservation;
     }
 
-    @Basic
-    @Column(name = "id_apprenant", nullable = true)
-    public Integer getIdApprenant() {
-        return idApprenant;
-    }
-
-    public void setIdApprenant(Integer idApprenant) {
-        this.idApprenant = idApprenant;
-    }
-
-    @Basic
-    @Column(name = "date_reservation", nullable = false)
     public Date getDateReservation() {
         return dateReservation;
     }
@@ -54,8 +43,6 @@ public class Reservation {
         this.dateReservation = dateReservation;
     }
 
-    @Basic
-    @Column(name = "confirmation", nullable = false)
     public boolean isConfirmation() {
         return confirmation;
     }
@@ -64,32 +51,6 @@ public class Reservation {
         this.confirmation = confirmation;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Reservation that = (Reservation) o;
-
-        if (idReservation != that.idReservation) return false;
-        if (confirmation != that.confirmation) return false;
-        if (idApprenant != null ? !idApprenant.equals(that.idApprenant) : that.idApprenant != null) return false;
-        if (dateReservation != null ? !dateReservation.equals(that.dateReservation) : that.dateReservation != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = idReservation;
-        result = 31 * result + (idApprenant != null ? idApprenant.hashCode() : 0);
-        result = 31 * result + (dateReservation != null ? dateReservation.hashCode() : 0);
-        result = 31 * result + (confirmation ? 1 : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "reservationByIdReservation")
     public Collection<NbrPlace> getNbrPlacetablesByIdReservation() {
         return nbrPlacetablesByIdReservation;
     }
@@ -98,13 +59,11 @@ public class Reservation {
         this.nbrPlacetablesByIdReservation = nbrPlacetablesByIdReservation;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "id_apprenant", referencedColumnName = "id_apprenant")
-    public Apprenant getApprenantByIdApprenant() {
-        return apprenantByIdApprenant;
+    public Apprenant getApprenant() {
+        return apprenant;
     }
 
-    public void setApprenantByIdApprenant(Apprenant apprenantByIdApprenant) {
-        this.apprenantByIdApprenant = apprenantByIdApprenant;
+    public void setApprenant(Apprenant apprenant) {
+        this.apprenant = apprenant;
     }
 }

@@ -1,43 +1,49 @@
 package com.webapp.youcode.model;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 @Entity
-public class Users {
-    private Long id;
-    private int userId;
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Users implements Serializable {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long idUsers;
     private String nom;
     private String prenom;
     private String email;
     private String password;
-    private int roleId;
-    private Collection<Admin> adminsByIdUser;
-    private Collection<Apprenant> studentsByIdUser;
-    private Roles rolesByRoleId;
+    @OneToOne (mappedBy = "users")
+    private Admin admin;
+    @OneToOne (mappedBy = "users")
+    private Apprenant apprenant;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
+    @ManyToOne
+    @JoinColumn(name = "id_role", referencedColumnName = "idRole", nullable = false)
+    private Roles roles;
+
+    public Users() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Users(String nom, String prenom, String email, String password, Roles roles) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
     }
 
-    @Id
-    @Column(name = "user_id", nullable = false)
-    public int getUserId() {
-        return userId;
+    public Long getIdUsers() {
+        return idUsers;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setIdUsers(Long idUsers) {
+        this.idUsers = idUsers;
     }
 
-    @Basic
-    @Column(name = "nom", nullable = false, length = 50)
     public String getNom() {
         return nom;
     }
@@ -46,8 +52,6 @@ public class Users {
         this.nom = nom;
     }
 
-    @Basic
-    @Column(name = "prenom", nullable = false, length = 50)
     public String getPrenom() {
         return prenom;
     }
@@ -56,8 +60,6 @@ public class Users {
         this.prenom = prenom;
     }
 
-    @Basic
-    @Column(name = "email", nullable = false, length = 255)
     public String getEmail() {
         return email;
     }
@@ -66,8 +68,6 @@ public class Users {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "password", nullable = false, length = 50)
     public String getPassword() {
         return password;
     }
@@ -76,68 +76,27 @@ public class Users {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "role_id", nullable = false)
-    public int getRoleId() {
-        return roleId;
+    public Roles getRoles() {
+        return roles;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRoles(Roles roles) {
+        this.roles = roles;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Users users = (Users) o;
-
-        if (userId != users.userId) return false;
-        if (roleId != users.roleId) return false;
-        if (nom != null ? !nom.equals(users.nom) : users.nom != null) return false;
-        if (prenom != null ? !prenom.equals(users.prenom) : users.prenom != null) return false;
-        if (email != null ? !email.equals(users.email) : users.email != null) return false;
-        if (password != null ? !password.equals(users.password) : users.password != null) return false;
-
-        return true;
+    public Admin getAdmin() {
+        return admin;
     }
 
-    @Override
-    public int hashCode() {
-        int result = userId;
-        result = 31 * result + (nom != null ? nom.hashCode() : 0);
-        result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + roleId;
-        return result;
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
     }
 
-    @OneToMany(mappedBy = "useradminByIdUser")
-    public Collection<Admin> getAdminsByIdUser() {
-        return adminsByIdUser;
+    public Apprenant getApprenant() {
+        return apprenant;
     }
 
-    public void setAdminsByIdUser(Collection<Admin> adminsByIdUser) {
-        this.adminsByIdUser = adminsByIdUser;
-    }
-
-    @OneToMany(mappedBy = "useradminByIdUser")
-    public Collection<Apprenant> getStudentsByIdUser() {
-        return studentsByIdUser;
-    }
-
-    public void setStudentsByIdUser(Collection<Apprenant> studentsByIdUser) {
-        this.studentsByIdUser = studentsByIdUser;
-    }
-    @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "role_id", nullable = false)
-    public Roles getRolesByRoleId() {
-        return rolesByRoleId;
-    }
-
-    public void setRolesByRoleId(Roles rolesByRoleId) {
-        this.rolesByRoleId = rolesByRoleId;
+    public void setApprenant(Apprenant apprenant) {
+        this.apprenant = apprenant;
     }
 }
