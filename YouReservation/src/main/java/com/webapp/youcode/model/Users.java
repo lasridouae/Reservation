@@ -36,6 +36,15 @@ public class Users implements Serializable {
         this.apprenant = apprenant;
         this.roles = roles;
     }
+
+    public Users(String nom, String prenom, String email, String password, Roles roles) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public Long getIdUsers() {
         return idUsers;
     }

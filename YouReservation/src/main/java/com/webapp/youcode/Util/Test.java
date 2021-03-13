@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
             Admin admin = new Admin();
             Roles roles = new Roles();
             Apprenant apprenant =new Apprenant();
-            Users users = new Users("douae","lasri","lasridouae1@gmail.com","1747",admin,apprenant,roles);
+            Users users = new Users("douae","lasri","lasridouae1@gmail.com","1747", admin, apprenant, roles);
 
             Session session = HibernateUtil.getSessionFactory().openSession();
             Transaction transaction  = null;
