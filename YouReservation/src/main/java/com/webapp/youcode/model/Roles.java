@@ -1,47 +1,65 @@
 package com.webapp.youcode.model;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+
 
 @Entity
 public class Roles implements Serializable {
     @Id
-    @GeneratedValue
+    @Column(name = "id_role")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idRole;
-    private String roleType;
-    @OneToMany(mappedBy = "idUsers")
-    private Collection<Users> users;
 
-    public Roles() {
+    @Column(nullable = false, unique = true)
+    private String roleName;
+
+
+    @OneToMany(mappedBy = "role")
+    private List<Users> users;
+    //Constructor
+    public Roles(){}
+
+    public Roles(Long id, String roleName) {
+        this.idRole = id;
+        this.roleName = roleName;
     }
 
-    public Roles(String roleType, Collection<Users> users) {
-        this.roleType = roleType;
-        this.users = users;
+    public Roles(String roleName) {
+        this.roleName = roleName;
     }
 
-    public Long getIdRole() {
+    //Getters and Setters
+
+    public Long getId() {
         return idRole;
     }
 
-    public void setIdRole(Long roleId) {
-        this.idRole = roleId;
+    public void setId(Long id) {
+        this.idRole = id;
     }
 
-    public String getRoleType() {
-        return roleType;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setRoleType(String roleType) {
-        this.roleType = roleType;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    public Collection<Users> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Collection<Users> users) {
-        this.users = users;
+    @Override
+    public String toString() {
+        return "Roles{" +
+                "id=" + idRole +
+                ", roleName='" + roleName + '\'' +
+                '}';
     }
 }

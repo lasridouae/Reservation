@@ -1,111 +1,114 @@
 package com.webapp.youcode.model;
-
-import net.bytebuddy.dynamic.loading.InjectionClassLoader;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "users")
 public class Users implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long idUsers;
-    private String nom;
-    private String prenom;
-    private String email;
-    private String password;
-    @OneToOne (mappedBy = "users")
-    private Admin admin;
-    @OneToOne (mappedBy = "users")
-    private Apprenant apprenant;
+    @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userId;
+    @Column(nullable = false)
+    private  String userNom;
+    @Column(nullable = false)
+    private  String userPrenom;
+    @Column(unique = true,nullable = false)
+    private  String userEmail;
+    @Column(nullable = false)
+    private  String userPassword;
     @ManyToOne
-    @JoinColumn(name = "idRole")
-    private Roles roles;
+    @JoinColumn(name = "id_role")
+    private  Roles role;
+
+    //Constructors
 
     public Users() {
     }
 
-    public Users( String nom, String prenom, String email, String password, Admin admin, Apprenant apprenant, Roles roles) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.password = password;
-        this.admin = admin;
-        this.apprenant = apprenant;
-        this.roles = roles;
+    public Users(String userNom, String userPrenom, String userEmail, String userPassword) {
+        this.userNom = userNom;
+        this.userPrenom = userPrenom;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
     }
 
-    public Users(String nom, String prenom, String email, String password, Roles roles) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-        this.password = password;
-        this.roles = roles;
+    public Users(String userNom, String userPrenom, String userEmail, String userPassword, Roles role) {
+        this.userNom = userNom;
+        this.userPrenom = userPrenom;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.role = role;
     }
 
-    public Long getIdUsers() {
-        return idUsers;
+    public Users(Long userId, String userNom, String userPrenom, String userEmail, String userPassword, Roles role) {
+        this.userId = userId;
+        this.userNom = userNom;
+        this.userPrenom = userPrenom;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.role = role;
     }
 
-    public void setIdUsers(Long idUsers) {
-        this.idUsers = idUsers;
+    //Getters and Setters
+    public Long getUserId() {
+        return userId;
     }
 
-    public String getNom() {
-        return nom;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public String getUserNom() {
+        return userNom;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public void setUserNom(String userNom) {
+        this.userNom = userNom;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public String getUserPrenom() {
+        return userPrenom;
     }
 
-    public String getEmail() {
-        return email;
+    public void setUserPrenom(String userPrenom) {
+        this.userPrenom = userPrenom;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public String getPassword() {
-        return password;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public Roles getRoles() {
-        return roles;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public void setRoles(Roles roles) {
-        this.roles = roles;
+    public Roles getRole() {
+        return role;
     }
 
-    public Admin getAdmin() {
-        return admin;
+    public void setRole(Roles role) {
+        this.role = role;
     }
 
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
-    }
-
-    public Apprenant getApprenant() {
-        return apprenant;
-    }
-
-    public void setApprenant(Apprenant apprenant) {
-        this.apprenant = apprenant;
+    @Override
+    public String toString() {
+        return "Users{" +
+                "userId=" + userId +
+                ", userNom='" + userNom + '\'' +
+                ", userPrenom='" + userPrenom + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", role=" + role +
+                '}';
     }
 }

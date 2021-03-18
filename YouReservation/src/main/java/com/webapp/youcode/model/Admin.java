@@ -1,16 +1,14 @@
 package com.webapp.youcode.model;
 
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@PrimaryKeyJoinColumn(name ="idUsers" )
+@PrimaryKeyJoinColumn(name ="user_id" )
 public class Admin extends Users implements Serializable {
 
     @OneToOne
-    @JoinColumn(name = "idUsers")
+    @JoinColumn(name = "user_id", referencedColumnName = "idUsers")
     private Users users;
 
     public Admin() {
@@ -21,8 +19,13 @@ public class Admin extends Users implements Serializable {
         this.users = users;
     }
 
-    public Admin(String nom, String prenom, String email, String password, Admin admin, Apprenant apprenant, Roles roles, Users users) {
-        super(nom, prenom, email, password, admin, apprenant, roles);
+    public Admin(String userNom, String userPrenom, String userEmail, String userPassword, Roles role, Users users) {
+        super(userNom, userPrenom, userEmail, userPassword, role);
+        this.users = users;
+    }
+
+    public Admin(Long userId, String userNom, String userPrenom, String userEmail, String userPassword, Roles role, Users users) {
+        super(userId, userNom, userPrenom, userEmail, userPassword, role);
         this.users = users;
     }
 

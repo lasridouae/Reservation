@@ -1,5 +1,4 @@
 package com.webapp.youcode.model;
-
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
@@ -24,6 +23,12 @@ public class Reservation {
         this.dateReservation = dateReservation;
         this.confirmation = confirmation;
         this.nbrPlacetablesByIdReservation = nbrPlacetablesByIdReservation;
+        this.apprenant = apprenant;
+    }
+
+    public Reservation(Date dateReservation, boolean confirmation, Apprenant apprenant) {
+        this.dateReservation = dateReservation;
+        this.confirmation = confirmation;
         this.apprenant = apprenant;
     }
 

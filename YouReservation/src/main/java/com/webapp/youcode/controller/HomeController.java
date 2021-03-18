@@ -1,57 +1,40 @@
 package com.webapp.youcode.controller;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletResponse;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
+
 
 @Controller
 public class HomeController {
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {
+		System.out.println("Home Page Requested, locale = " + locale);
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
-	@RequestMapping(value="/home")
-	public ModelAndView home(HttpServletResponse response) throws IOException{
-		return new ModelAndView("home");
-	}
-	@RequestMapping(value = {"/registerPage"}, method = RequestMethod.GET)
-	public ModelAndView registerPage() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("registerPage");
-		return model;
-	}
-	@RequestMapping(value = {"/userPage"}, method = RequestMethod.GET)
-	public ModelAndView userPage() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("userPage");
-		return model;
-	}
-	@RequestMapping(value = {"/adminPage"}, method = RequestMethod.GET)
-	public ModelAndView adminPage() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("adminPage");
-		return model;
+		String formattedDate = dateFormat.format(date);
+
+		model.addAttribute("serverTime", formattedDate);
+
+		return "redirect:/register";
 	}
 
-	@RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-	public ModelAndView loginPage(@RequestParam(value = "error",required = false) String error,
-								  @RequestParam(value = "logout",	required = false) String logout) {
-
-		ModelAndView model = new ModelAndView();
-		if (error != null) {
-			model.addObject("error", "Invalid Credentials provided.");
-		}
-
-		if (logout != null) {
-			model.addObject("message", "Logged successfully.");
-		}
-
-		model.setViewName("loginPage");
-		return model;
-	}
+//	@RequestMapping(value = "/user", method = RequestMethod.POST)
+//	public String user(@Validated User user, Model model) {
+//		System.out.println("User Page Requested");
+//		model.addAttribute("userName", user.getUserName());
+//		return "user";
+//	}
 
 }
-

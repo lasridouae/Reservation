@@ -2,20 +2,23 @@ package com.webapp.youcode.Dao;
 
 import com.webapp.youcode.model.*;
 
-
 import java.util.List;
 
-public interface UsersDao {
-    public void addUser(Users users);
 
-    public List<Users> listUser();
+    public interface UsersDao {
+    	
+        public Users getById(long id);
 
-    public void removeUser(int id);
+        public void create(Users users);
 
-    public Users getUser(int id);
+        public List<Users> getAll();
 
-    public void editUser(Users users);
+        public void remove(long id);
 
-    public Users findByemail(String email);
+        public void update(Users users);
 
-}
+
+    }
+
+
+

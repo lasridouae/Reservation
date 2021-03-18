@@ -1,88 +1,23 @@
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<html lang="en">
 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page session="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Youcode Reservation</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
-
-
-    <!-- jquery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-
-    <!-- bootstrap -->
-    <link href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
-    <!-- Vendor CSS Files -->
-    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/vendor/boxicons/css/boxicons.min.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/vendor/icofont/icofont.min.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/img/homePage.jpg" />" rel="stylesheet">
-
-
-
-
-
+<title>Home</title>
 </head>
-
 <body>
+	<h1>Hello world!</h1>
 
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top  d-flex justify-content-center align-items-center header-transparent">
+	<P>The time on the server is ${serverTime}.</p>
 
-    <nav class="nav-menu d-none d-lg-block">
-        <ul>
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="/">Reservation</a></li>
-            <li><a href="/loginPage">Login</a></li>
-            <li><a href="/registerPage">Register</a></li>
-        </ul>
-    </nav><!-- .nav-menu -->
-
-</header><!-- End Header -->
-
-<!-- ======= Hero Section ======= -->
-<section id="hero">
-    <div class="hero-container">
-        <h1>Welcome</h1>
-        <h2>Reserve your place at Youcode</h2>
-    </div>
-</section><!-- End Hero -->
-
-
-<!-- ======= Footer ======= -->
-<footer id="footer">
-    <div class="container">
-
-        <div class="social-links">
-            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        </div>
-        <div class="copyright">
-            &copy; Copyright <strong><span>Youcode</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            Designed by <a href="#">Dlas</a>
-        </div>
-    </div>
-</footer><!-- End Footer -->
-
-
-<!-- Vendor JS Files -->
-
-<link href="<c:url value="/resources/vendor/jquery/jquery.min.js" />" rel="stylesheet">
-<link href="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js" />" rel="stylesheet">
+	<form action="user" method="post">
+		<input type="text" name="userName"><br>
+		<br> 
+		<input type="text" name="PassWord"><br> 
+		<br>
+		<input type="submit" value="Login">
+	</form>
 </body>
-
 </html>

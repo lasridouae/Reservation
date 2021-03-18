@@ -1,60 +1,86 @@
 package com.webapp.youcode.DaoImp;
-import com.webapp.youcode.Dao.UsersDao;
-import com.webapp.youcode.model.*;
+import java.util.*;
+
+
+import javax.persistence.Query;
+import javax.transaction.Transactional;
+
+import com.webapp.youcode.Util.HibernateUtil;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.webapp.youcode.Dao.UsersDao;
+import com.webapp.youcode.model.Users;
+
 @Repository
 public class UsersDaoImpl implements UsersDao {
-    @Autowired
-    SessionFactory sessionFactory;
+
+	@Autowired
+	private Session session = null;
+
+	
+    @Override
+    @Transactional
+    public Users getById(long id) {
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+            // get User by id
+    	
+            Users users = session.get(Users.class, id);
+//            System.out.println("user is !");
+        
+        return users;
+    }
+	
+	
+	
+	
 
     @Override
-    public void addUser(Users users) {
-        sessionFactory.getCurrentSession().save(users);
+    @Transactional
+    public void create(Users users) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+       session.saveOrUpdate(users);
 
     }
 
     @Override
-    public List<Users> listUser() {
-        return sessionFactory.getCurrentSession().createQuery("from Users order by id").list();
+    @Transactional
+    public List<Users> getAll() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+
+		List users = new ArrayList<Users>();
+		
+		Query query = session.createQuery("from Users");
+		
+		users = query.getResultList();
+ 
+		return users;
+
     }
 
     @Override
-    public void removeUser(int id) {
-        Users users = (Users) sessionFactory.getCurrentSession().load(Users.class, id);
-        if (null != users) {
-            sessionFactory.getCurrentSession().delete(users);
-        }
-
+    @Transactional
+    public void remove(long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+		
+		Users user = getById(id);
+		
+		session.delete(user);
     }
 
-    @Override
-    public Users getUser(int id) {
-        return (Users) sessionFactory.getCurrentSession().get(Users.class, id);
-    }
+
 
     @Override
-    @SuppressWarnings("unchecked")
-    public void editUser(Users users) {
-        sessionFactory.getCurrentSession().update(users);
-    }
+    @Transactional
+    public void update(Users users) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
-    @Override
-    public Users findByemail(String email) {
-        List<Users> users = new ArrayList<Users>();
+		Users user = getById(users.getUserId());
 
-        users = sessionFactory.getCurrentSession().createQuery("from Users where email=?").setParameter(0, email).list();
-
-        if (users.size() > 0) {
-
-            return users.get(0);
-        } else {
-
-            return null;
-        }
+		session.update(users);
     }
 
 

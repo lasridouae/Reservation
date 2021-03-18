@@ -1,18 +1,19 @@
 package com.webapp.youcode.Dao;
 import com.webapp.youcode.model.*;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ReservationDao {
 
-    public void addReservation(Reservation reservation);
+    public void create(Reservation reservation) throws ClassNotFoundException, SQLException;
 
-    public List<Reservation> ReservationList();
+    public List<Reservation> getAll();
 
-    public void removeReservation(int id);
+    public void remove(long id);
 
-    public Reservation getReservation(int id);
+    public Reservation getById(long id);
 
-    public void editReservation(Reservation reservation);
+    public Reservation update(Reservation reservation);
 
 }

@@ -4,13 +4,13 @@ import java.util.List;
 
 public interface NbrPlaceDao {
 
-    public void addPlace(NbrPlace nbrPlace);
+    public void create(NbrPlace nbrPlace);
 
-    public List<NbrPlace> placeList();
+    public List<NbrPlace> getAll();
 
-    public void removePlace(int id);
+    public void remove(long id);
 
-    public NbrPlace getPlace(int id);
+    public NbrPlace getById(long id);
 
-    public void editPlace(NbrPlace nbrPlace);
+    public NbrPlace update(NbrPlace nbrPlace);
 }

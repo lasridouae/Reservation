@@ -1,25 +1,29 @@
 package com.webapp.youcode.model;
-
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
 
 @Entity
-@PrimaryKeyJoinColumn(name ="idUsers" )
+@PrimaryKeyJoinColumn(name ="user_id" )
 public class Apprenant extends Users implements Serializable {
     @OneToOne
-    @JoinColumn(name = "idUsers")
+    @JoinColumn(name = "user_id", referencedColumnName = "idUsers")
     private Users users;
 
     public Apprenant() {
 
     }
+
     public Apprenant(Users users) {
         this.users = users;
     }
 
-    public Apprenant(String nom, String prenom, String email, String password, Admin admin, Apprenant apprenant, Roles roles, Users users) {
-        super(nom, prenom, email, password, admin, apprenant, roles);
+    public Apprenant(String userNom, String userPrenom, String userEmail, String userPassword, Roles role, Users users) {
+        super(userNom, userPrenom, userEmail, userPassword, role);
+        this.users = users;
+    }
+
+    public Apprenant(Long userId, String userNom, String userPrenom, String userEmail, String userPassword, Roles role, Users users) {
+        super(userId, userNom, userPrenom, userEmail, userPassword, role);
         this.users = users;
     }
 
