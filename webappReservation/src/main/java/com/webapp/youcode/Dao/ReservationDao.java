@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ReservationDao {
 
-    public void create(Reservation reservation) throws ClassNotFoundException, SQLException;
+    public void create(Reservation reservation) ;
 
     public List<Reservation> getAll();
 

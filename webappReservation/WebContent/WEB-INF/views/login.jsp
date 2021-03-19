@@ -1,52 +1,39 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Dlas
-  Date: 10/03/2021
-  Time: 13:58
-  To change this template use File | Settings | File Templates.
---%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <html>
 <!-- Sing in  Form -->
-<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
+<link href="${pageContext.request.contextPath}../resources/css/login.css"" rel="stylesheet">
 <body>
 <section class="sign-in">
     <div class="container">
         <div class="signin-content">
             <div class="signin-image">
-                <figure><img src="images/signin-image.jpg" alt="sing up image"></figure>
-                <a href="#" class="signup-image-link">Create an account</a>
+                <figure><img src="${pageContext.request.contextPath}/resources/images/signin-image.jpg" alt="sing up image"></figure>
+                <a href="register" class="signup-image-link">Create an account</a>
             </div>
-
             <div class="signin-form">
                 <h2 class="form-title">Sign up</h2>
-                <c:if test="${not empty error}"><div style="color: red">${error}</div></c:if>
-                <c:if test="${not empty message}"><div>${message}</div></c:if>
-                <form method="POST" action="<c:url value='loginPage'/>" class="register-form" id="login-form">
-                    <div class="form-group">
-                        <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                        <input type="text" name="your_name" id="your_name" placeholder="Your Name"/>
+               <form class="register-form" id="login-form" action="/webappReservation/loginAcces" method="post">
+				<div class="form-group">
+                  <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+				<input type="text" name="userEmail"  placeholder="Email"  id="emailId" class="border-bottom border-primary"> </div>
+			 <div class="form-group">
+                  <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+				<input type="password" name="userPassword" placeholder="password" id="pwd" class="border-bottom border-primary"> </div>
+				<div class="form-group form-button">
+                        <input type="submit"  class="form-submit" value="Log in"/>
                     </div>
-                    <div class="form-group">
-                        <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                        <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                        <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                    </div>
-                    <div class="form-group form-button">
-                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
-                    </div>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                </form>
+		</form>
+	
             </div>
         </div>
     </div>
 </section>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <link href="<c:url value="/resources/vendor/jquery/jquery.min.js" />" rel="stylesheet">
 </body>
 </html>
+		
 
