@@ -47,7 +47,7 @@ public class LoginController {
 					if(users.getRole().equals("Apprenant")){
 						//return "redirect:/reservation";
 					}else {
-						return "redirect:/";
+						return "redirect:/reservation";
 					}
 				}
 			}else {

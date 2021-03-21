@@ -32,13 +32,13 @@ public class ReservationController {
 		System.out.println(reservation);
 		return "reservationForm";
 	}
-	//controller method to process the reservation form
-	@RequestMapping(value ="/reservationForm", method = RequestMethod.POST)
-	public String addReservation(@ModelAttribute("reservation") Reservation reservation) {
-		reservationDao.create(reservation);
-		System.out.println("reservation added");
-		return "redirect:/reservation ";
-	}
+//	//controller method to process the reservation form
+//	@RequestMapping(value ="/reservationForm", method = RequestMethod.POST)
+//	public String addReservation(@ModelAttribute("reservation") Reservation reservation) {
+//		reservationDao.create(reservation);
+//		System.out.println("reservation added");
+//		return "redirect:/reservation ";
+//	}
 	
 
 
