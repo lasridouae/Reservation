@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface ReservationDao {
 
-    public void create(Reservation reservation) ;
+    public void Add(Reservation reservation) ;
 
-    public List<Reservation> getAll();
+    public List<Reservation> getAllReservation();
 
     public void remove(long id);
 

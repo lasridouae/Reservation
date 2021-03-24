@@ -1,12 +1,10 @@
 package com.webapp.youcode.Test;
+import java.sql.SQLException;
 
 import com.webapp.youcode.Dao.UsersDao;
 import com.webapp.youcode.DaoImp.UsersDaoImpl;
-import com.webapp.youcode.model.Roles;
-import com.webapp.youcode.model.Users;
-
-import javax.management.relation.Role;
-import java.sql.SQLException;
+import com.webapp.youcode.Model.Roles;
+import com.webapp.youcode.Model.Users;
 
 public class Test {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {

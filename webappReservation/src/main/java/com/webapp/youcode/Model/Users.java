@@ -1,5 +1,6 @@
 package com.webapp.youcode.Model;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -109,15 +110,5 @@ public class Users implements Serializable {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "Users{" +
-                "userId=" + userId +
-                ", userNom='" + userNom + '\'' +
-                ", userPrenom='" + userPrenom + '\'' +
-                ", userEmail='" + userEmail + '\'' +
-                ", userPassword='" + userPassword + '\'' +
-                ", role=" + role +
-                '}';
-    }
+
 }

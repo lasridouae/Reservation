@@ -166,7 +166,7 @@ body{
 				<input type="submit" value="Login">
 				<a href="register">register</a>
 		</div>
-          
+          <a href="logout">logout</a>
           </form>  
 				
 				<!-- <input type="text" name="userEmail"  placeholder="Email" >

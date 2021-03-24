@@ -1,59 +1,74 @@
 package com.webapp.youcode.DaoImp;
-import java.sql.SQLException;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.transaction.Transactional;
+import javax.persistence.Query;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.webapp.youcode.Dao.ReservationDao;
 import com.webapp.youcode.Model.Reservation;
 
 @Repository
-@Component("reservationDao")
+//@Component("reservationDao")
 public class ReservationDaoImpl implements ReservationDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	 @Transactional
-	public void create(Reservation reservation){
+	public void Add(Reservation reservation) {
 		sessionFactory.getCurrentSession().saveOrUpdate(reservation);
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Reservation> getAllReservation() {
 		
-	}
-
-	@Override
-	 @Transactional
-	public List<Reservation> getAll() {
-		return sessionFactory.getCurrentSession().createQuery("from Reservation").list();
-	}
-
-	@Override
-	 @Transactional
-	public void remove(long id) {
-		 Reservation reservation = (Reservation) sessionFactory.getCurrentSession().load (Reservation.class, id);
-	        if (null != reservation) {
-	            this.sessionFactory.getCurrentSession().remove(reservation);
-	        }
-	}
-
-	@Override
-	 @Transactional
-	public Reservation getById(long id) {
-		 return (Reservation) sessionFactory.getCurrentSession().get(
-				 Reservation.class, id);
-	}
-
-	@Override
-	 @Transactional
-	public Reservation update(Reservation reservation) {
-		 sessionFactory.getCurrentSession().update(reservation);
-	        return reservation;
-	}
-
+		Session session = sessionFactory.getCurrentSession();
+		
+//		return sessionFactory.getCurrentSession().createQuery("From Reservation").list();
+		
+		List reservations = new ArrayList<Reservation>();
+		
+		Query query = session.createQuery("from Reservation");
+		
+		reservations = query.getResultList();
  
+		return reservations;
+	}
+
+	@Override
+	public void remove(long id) {
+		Session session = sessionFactory.getCurrentSession();
+
+		Reservation reservation = getById(id);
+
+		session.remove(reservation);
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Reservation getById(long id) {
+		Session session = sessionFactory.getCurrentSession();
+
+		Reservation reservation = session.get(Reservation.class, id);
+
+		return reservation;
+	}
+
+	@Override
+	public Reservation update(Reservation reservation) {
+		sessionFactory.getCurrentSession().update(reservation);
+        return reservation;
+
+	
+	}
+
 }

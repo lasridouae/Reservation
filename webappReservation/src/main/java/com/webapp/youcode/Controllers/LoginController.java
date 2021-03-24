@@ -43,21 +43,15 @@ public class LoginController {
 				session.setAttribute("role", users.getRole());
 				if (users.getRole().equals("admin")) {
 					return "redirect:/Admin";
-				}else {	
-					if(users.getRole().equals("Apprenant")){
-						//return "redirect:/reservation";
-					}else {
+				}else if(users.getRole().equals("Apprenant")){
+					
 						return "redirect:/reservation";
 					}
+				System.out.println("user exist");
 				}
-			}else {
-				return "redirect:/";
 			}
-		}else {
-			System.out.println("user doesn't exist");
-		}
+		return "redirect:/";
 		
-		return null;	
 	}
 	
 	@RequestMapping("/logout")

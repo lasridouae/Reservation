@@ -8,20 +8,17 @@
         <html>
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>New/Edit place</title>
+        <title>Reservation</title>
         </head>
         <body>
         <div align="center">
-        <h1>New/Edit Reseravtion</h1>
-        <form:form action="addReservation" method="post" modelAttribute="reservation">
+        <h1>Reseravtion</h1>
+        <form:form action="saveReservation" method="post" modelAttribute="reservation">
         <td>Date:</td>
-        <form:input type="date" id="start" name="trip-start" value="2021-07-22" min="2021-01-01" max="2022-12-31" path="dateReservation" /></td>
-
-        <td>Place:</td>
-        <form:input type="place" path="nbrPlacetablesByIdReservation" /></td>
+        <form:input type="date" id="start" name="trip-start"  value="2021-07-22" min="2021-01-01" max="2022-12-31" path="dateReservation" />
         <td colspan="2" align="center"><input type="submit" value="Save"></td>
         </form:form>
         </div>
 
         </body>
-        </html>
+        </html> 
