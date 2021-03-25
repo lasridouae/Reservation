@@ -58,7 +58,7 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 		System.out.println("logout succeed");
-		return "redirect:/login";
+		return "redirect:/home";
 	}
 	
 }

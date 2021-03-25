@@ -44,12 +44,7 @@ public class ReservationController {
 	    }
 	   @RequestMapping(value = "/saveReservation", method = RequestMethod.POST)
 	    public ModelAndView saveReservation(@ModelAttribute Reservation reservation) {
-	        if (reservation.getIdReservation() == 0) { // if employee id is 0 then creating the
-	            // employee other updating the employee
 	            reservationService.addReservation(reservation);
-	        } else {
-	            reservationService.updateReservation(reservation);
-	        }
 	        return new ModelAndView("redirect:/");
 	    }
 //	

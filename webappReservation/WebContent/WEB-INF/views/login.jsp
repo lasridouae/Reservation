@@ -165,8 +165,9 @@ body{
 				<input type="password"  name="userPassword" placeholder="password" name="password"><br>
 				<input type="submit" value="Login">
 				<a href="register">register</a>
+				 <a href="logout" style="color: white ">logout</a>
 		</div>
-          <a href="logout">logout</a>
+         
           </form>  
 				
 				<!-- <input type="text" name="userEmail"  placeholder="Email" >
