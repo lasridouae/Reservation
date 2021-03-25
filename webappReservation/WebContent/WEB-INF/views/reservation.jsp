@@ -8,18 +8,21 @@
 <h2>Welcome ${ userName }</h2>
 <div align="center">
     <h1>Reservation list</h1>
-    <h3>
+  <h3>
             <a href="newReservation">New Reservation</a>
         </h3>
     <table border="1">
         <th>idReservation</th>
         <th>Date</th> 
         
-             <c:forEach  var="reservation" items="${reservations}"  >
-            <tr>
-                <td>${reservation.idReservation}</td>
-                <td>${reservation.dateReservation}</td>
-            </tr>
+            <c:forEach var="reservation" items="${listReservation}">
+                <tr>
+ 
+                    <td>${reservation.idReservation}</td>
+                    <td>${reservation.dateReservation}</td>
+                    <td>${reservation.confirmation}</td>
+                 
+                </tr>
             </c:forEach>
     </table>
 </div>

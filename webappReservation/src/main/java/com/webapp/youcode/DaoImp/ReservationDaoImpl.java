@@ -29,10 +29,10 @@ public class ReservationDaoImpl implements ReservationDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Reservation> getAllReservation() {
-		
-		Session session = sessionFactory.getCurrentSession();
-		
+//		
 //		return sessionFactory.getCurrentSession().createQuery("From Reservation").list();
+//		
+		Session session = sessionFactory.getCurrentSession();
 		
 		List reservations = new ArrayList<Reservation>();
 		
