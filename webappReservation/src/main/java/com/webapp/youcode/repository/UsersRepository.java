@@ -1,4 +1,6 @@
 package com.webapp.youcode.repository;
+import java.util.List;
+
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
@@ -7,7 +9,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.webapp.youcode.Model.Roles;
 import com.webapp.youcode.Model.Users;
 @Repository
 public class UsersRepository {
@@ -32,50 +33,13 @@ public class UsersRepository {
 	        }
 	    }
 	
-//	@Transactional
-//	public boolean validate(String userEmail, String userPassword) {
-//		Transaction transaction = null;
-//		Users users = null;
-//		try {
-//			// start session
-//			Session session = sessionFactory.getCurrentSession();
-//			transaction = session.beginTransaction();
-//			// get user object
-//			users = (Users)session.createQuery("from Users where userEmail=: userEmail and userPassword=: userPassword")
-//					.setParameter("userEmail",userEmail).uniqueResult();
-//			System.out.println(userEmail);
-//		
-//			if (users != null && users.getUserPassword().equals(userPassword)) {
-//				return true;
-//				
-//			}
-//			
-//			// commit transaction
-//			transaction.commit();
-//		} catch (Exception e) {
-//			if (transaction != null) {
-//				transaction.rollback();
-//			}
-//			e.printStackTrace();
-//		}
-//		return false;
-//	}
-	@Transactional
-	public Roles getByRole(Long id){
-    Roles role = null;
-        
-        try {
-        	Session session = sessionFactory.getCurrentSession();
-            role = (Roles) session.get(Roles.class, id);
-            System.out.println("role lu !");
-        } finally {
-            if (sessionFactory != null) {
-            	sessionFactory.close();
-            }
+    public List<Users> getAll() {
+    	Session session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        List<Users> usersList = session.createQuery("From Users  where role.roleName='apprenant'").list();
+        session.getTransaction().commit();
+        return usersList;
+    }
 
-        }
 
-        return role;
-		
-	}
 }

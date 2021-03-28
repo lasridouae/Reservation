@@ -176,7 +176,7 @@ body{
 </head>
 
 <body>
-<form:form action="/webappReservation/processForm" method="post" modelAttribute="users">
+<form:form action="processForm" method="post" modelAttribute="users">
 	<div class="body"></div>
 		<div class="grad"></div>
 		<div class="header">
@@ -193,8 +193,10 @@ body{
 				<br>
 				
 				<form:input type="password"  placeholder="password" path="userPassword"  name="password"/>
+				
+				<input type="hidden" name="hide" id="hide" value="2" >
 			
-				<input type="password" type="password" placeholder="Repeat your password"/>
+				<input type="password" type="password" name="pass" id="pass" placeholder="Repeat your password"/>
 			
 				<input type="submit" value="Register" />
 		</form:form>

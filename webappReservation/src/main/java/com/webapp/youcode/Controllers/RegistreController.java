@@ -1,4 +1,6 @@
 package com.webapp.youcode.Controllers;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.webapp.youcode.Dao.UsersDao;
 import com.webapp.youcode.DaoImp.UsersDaoImpl;
+import com.webapp.youcode.Model.Roles;
 import com.webapp.youcode.Model.Users;
 
 @Controller
@@ -15,6 +18,8 @@ public class RegistreController {
 	
 	@Autowired
 	private UsersDao usersDao = new UsersDaoImpl();
+	private Users users;
+
 	
 	//controller method to show the registration form
 	
@@ -31,10 +36,20 @@ public class RegistreController {
 	
 	//controller method to process the registration form
 	@RequestMapping(value ="/processForm", method = RequestMethod.POST)
-	public String processFrom(@ModelAttribute("users") Users users) {
-		usersDao.create(users);
-		System.out.println("register done");
-		return "redirect:/";
+	public String processFrom(HttpServletRequest request,@ModelAttribute("users") Users users) {
+		String userPasword = request.getParameter("pass");
+		if(userPasword.equals(users.getUserPassword())) {
+			Roles role = usersDao.getRoleById(2);
+			users.setRole(role);	
+			usersDao.create(users);
+			System.out.println("register done");
+			
+			return "redirect:/";
+			
+		}else
+			
+		return "login";
+		
 	}
 	
 

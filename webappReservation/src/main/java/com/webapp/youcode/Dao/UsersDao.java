@@ -1,24 +1,25 @@
 package com.webapp.youcode.Dao;
 
-import com.webapp.youcode.Model.*;
-
 import java.util.List;
 
+import com.webapp.youcode.Model.Roles;
+import com.webapp.youcode.Model.Users;
 
-    public interface UsersDao {
-    	
-        public Users getById(long id);
+public interface UsersDao {
 
-        public void create(Users users);
+	public Users getById(long id);
 
-        public List<Users> getAll();
+	public void create(Users users);
 
-        public void remove(long id);
+	public List<Users> getAll();
 
-        public void update(Users users);
+	public void remove(long id);
 
+	public void update(Users users);
 
-    }
+	public void addRole(Roles roles);
 
+	public Roles getRoleById(long id);
 
-
+	public List<Roles> getAllRoles();
+}

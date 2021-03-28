@@ -34,4 +34,6 @@ public class Apprenant extends Users implements Serializable {
     public void setUsers(Users users) {
         this.users = users;
     }
+
+
 }

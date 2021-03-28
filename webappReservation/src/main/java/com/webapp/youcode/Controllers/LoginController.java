@@ -34,12 +34,12 @@ public class LoginController {
 //		UsersRepository userRepository=new UsersRepository();
 
 		users=  userRepository.getByEmail(users.getUserEmail(),users.getUserPassword());
-		if (users != null && users.getUserPassword().equals(users.getUserPassword()) ==true) {
+		if (users != null && users.getUserPassword().equals(users.getUserPassword()) == true) {
 			session.setAttribute("id",users.getUserId());
 			session.setAttribute("nom",users.getUserNom());
 			session.setAttribute("userPrenom",users.getUserPrenom());
 			if (users.getRole().getRoleName().equals("admin")) {
-				return "redirect:/register";
+				return "redirect:/adminPage";
 			} else if (users.getRole().getRoleName().equals("apprenant")) {
 				return "redirect:/reservation";
 			}
