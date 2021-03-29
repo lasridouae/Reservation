@@ -191,10 +191,7 @@ body{
 		
 				<form:input type="email" placeholder="userEmail" path="userEmail" />
 				<br>
-				
 				<form:input type="password"  placeholder="password" path="userPassword"  name="password"/>
-				
-				<input type="hidden" name="hide" id="hide" value="2" >
 			
 				<input type="password" type="password" name="pass" id="pass" placeholder="Repeat your password"/>
 			

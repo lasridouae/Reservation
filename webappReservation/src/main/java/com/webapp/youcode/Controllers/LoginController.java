@@ -39,10 +39,11 @@ public class LoginController {
 			session.setAttribute("nom",users.getUserNom());
 			session.setAttribute("userPrenom",users.getUserPrenom());
 			if (users.getRole().getRoleName().equals("admin")) {
-				return "redirect:/adminPage";
+				return "redirect:/admin";
 			} else if (users.getRole().getRoleName().equals("apprenant")) {
 				return "redirect:/reservation";
 			}
+			System.out.println("safi rak tlogiti ");
 		}
 		return "redirect:/";
 	}

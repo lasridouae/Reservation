@@ -3,6 +3,8 @@ package com.webapp.youcode.Controllers;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,12 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.webapp.youcode.Dao.ReservationDao;
 import com.webapp.youcode.Model.Reservation;
+import com.webapp.youcode.repository.ReservationRepository;
 import com.webapp.youcode.service.ReservationService;
 
 @Controller
 public class ReservationController {
 	@Autowired
 	private ReservationDao reservationDao ;
+	
+	private ReservationRepository reservationRespsitory;
 
 	@Autowired
 	private ReservationService reservationService ;
@@ -47,6 +52,30 @@ public class ReservationController {
 	            reservationService.addReservation(reservation);
 	        return new ModelAndView("redirect:/");
 	    }
+	   
+//	   @RequestMapping(value = "/admin" )
+//		public ModelAndView listRes(ModelAndView theModel) throws IOException {
+//		 List<Reservation> listReservation = reservationService.getAllReservation();
+//	        theModel.addObject("listReservation", listReservation);
+//	        theModel.setViewName("admin");
+//	        return theModel;
+//		}
+       @RequestMapping(value = "/deleteReservation", method = RequestMethod.POST)
+       public String deleteReservation(HttpServletRequest request){
+            Long id = Long.valueOf(request.getParameter("id"));
+            reservationService.deleteReservation(id);
+            return "redirect:/reservation";
+       }
+
+
+    @RequestMapping(value = "/ApprouveReservation", method = RequestMethod.POST)
+    public String accepterReservation(HttpServletRequest request){
+        Long id = Long.valueOf(request.getParameter("id"));
+        Reservation reservation = reservationService.getReservation(id);
+        reservation.setConfirmation(true);
+        reservationService.updateReservation(reservation);
+        return "redirect:/reservation";
+    }
 //	
 //	
 //	//controller method to process the reservation form

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.webapp.youcode.Dao.UsersDao;
+import com.webapp.youcode.Model.Apprenant;
 import com.webapp.youcode.Model.Roles;
 import com.webapp.youcode.Model.Users;
 
@@ -105,5 +106,7 @@ public class UsersDaoImpl implements UsersDao {
 
 		return roles;
 	}
+
+
 
 }

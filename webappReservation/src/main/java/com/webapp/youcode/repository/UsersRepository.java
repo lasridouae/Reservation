@@ -1,13 +1,13 @@
 package com.webapp.youcode.repository;
-import java.util.List;
-
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.webapp.youcode.Model.Users;
 @Repository
@@ -33,13 +33,6 @@ public class UsersRepository {
 	        }
 	    }
 	
-    public List<Users> getAll() {
-    	Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        List<Users> usersList = session.createQuery("From Users  where role.roleName='apprenant'").list();
-        session.getTransaction().commit();
-        return usersList;
-    }
 
 
 }

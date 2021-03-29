@@ -3,9 +3,9 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 
 
-        <html>
-        <head>
-        <body>
-        <h1>hello if you are here you are Admin</h1>
-        </body>
-        </html>
+<html>
+<head>
+<body>
+	<h1>hello if you are here you are Admin</h1>
+</body>
+</html>

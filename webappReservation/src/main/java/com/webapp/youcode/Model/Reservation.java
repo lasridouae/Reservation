@@ -17,8 +17,7 @@ public class Reservation {
     private Long idReservation;
     private Date dateReservation;
     private boolean confirmation;
-    @OneToMany(mappedBy = "reservation")
-    private Collection<NbrPlace> nbrPlacetablesByIdReservation;
+    private String typeReservation;
     @ManyToOne
     @JoinColumn(name = "idUsers")
     private Apprenant apprenant;
@@ -26,14 +25,21 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(Date dateReservation, boolean confirmation, Collection<NbrPlace> nbrPlacetablesByIdReservation, Apprenant apprenant) {
-        this.dateReservation = dateReservation;
-        this.confirmation = confirmation;
-        this.nbrPlacetablesByIdReservation = nbrPlacetablesByIdReservation;
-        this.apprenant = apprenant;
-    }
 
-    public Reservation(Date dateReservation, boolean confirmation, Apprenant apprenant) {
+    public Reservation(Long idReservation, Date dateReservation, boolean confirmation, String typeReservation,
+			Apprenant apprenant) {
+		super();
+		this.idReservation = idReservation;
+		this.dateReservation = dateReservation;
+		this.confirmation = confirmation;
+		this.typeReservation = typeReservation;
+		this.apprenant = apprenant;
+	}
+
+
+
+
+	public Reservation(Date dateReservation, boolean confirmation, Apprenant apprenant) {
         this.dateReservation = dateReservation;
         this.confirmation = confirmation;
         this.apprenant = apprenant;
@@ -63,18 +69,19 @@ public class Reservation {
         this.confirmation = confirmation;
     }
 
-    public Collection<NbrPlace> getNbrPlacetablesByIdReservation() {
-        return nbrPlacetablesByIdReservation;
-    }
-
-    public void setNbrPlacetablesByIdReservation(Collection<NbrPlace> nbrPlacetablesByIdReservation) {
-        this.nbrPlacetablesByIdReservation = nbrPlacetablesByIdReservation;
-    }
 
     public Apprenant getApprenant() {
         return apprenant;
     }
 
+	public String getTypeReservation() {
+		return typeReservation;
+	}
+
+
+	public void setTypeReservation(String typeReservation) {
+		this.typeReservation = typeReservation;
+	}
     public void setApprenant(Apprenant apprenant) {
         this.apprenant = apprenant;
     }

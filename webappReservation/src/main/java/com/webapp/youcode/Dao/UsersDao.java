@@ -2,13 +2,13 @@ package com.webapp.youcode.Dao;
 
 import java.util.List;
 
-import com.webapp.youcode.Model.Roles;
-import com.webapp.youcode.Model.Users;
+import com.webapp.youcode.Model.*;
+
 
 public interface UsersDao {
 
 	public Users getById(long id);
-
+	
 	public void create(Users users);
 
 	public List<Users> getAll();

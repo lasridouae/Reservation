@@ -5,8 +5,20 @@
 <html>
 <head>
 <title>home</title>
+   <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
+
+
+
+<%-- <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/style.css"> 
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/vendor/boxicons/css/boxicons.min.css"> 
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/vendor/icofont/icofont.min.css"> 
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/img/homePage.jpg">  --%>
+  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
+
 <header id="header" class="fixed-top  d-flex justify-content-center align-items-center header-transparent">
 
     <nav class="nav-menu d-none d-lg-block">
@@ -46,6 +58,8 @@
         </div>
     </div>
 </footer><!-- End Footer -->
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 </body>
 </html>
