@@ -13,20 +13,19 @@ import javax.persistence.OneToMany;
 @Entity
 public class Reservation {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private Long idReservation;
     private Date dateReservation;
     private boolean confirmation;
     private String typeReservation;
     @ManyToOne
-    @JoinColumn(name = "idUsers")
+    @JoinColumn(name = "userId")
     private Apprenant apprenant;
 
     public Reservation() {
     }
 
-
-    public Reservation(Long idReservation, Date dateReservation, boolean confirmation, String typeReservation,
+	public Reservation(Long idReservation, Date dateReservation, boolean confirmation, String typeReservation,
 			Apprenant apprenant) {
 		super();
 		this.idReservation = idReservation;
@@ -35,8 +34,12 @@ public class Reservation {
 		this.typeReservation = typeReservation;
 		this.apprenant = apprenant;
 	}
-
-
+    
+//    public Reservation(Date dateReservation, Apprenant apprenant) {
+//		super();
+//		this.dateReservation = dateReservation;
+//		this.apprenant = apprenant;
+//	}
 
 
 	public Reservation(Date dateReservation, boolean confirmation, Apprenant apprenant) {
@@ -73,6 +76,12 @@ public class Reservation {
     public Apprenant getApprenant() {
         return apprenant;
     }
+    
+
+	public void setApprenant(Apprenant apprenant) {
+		this.apprenant = apprenant;
+	}
+
 
 	public String getTypeReservation() {
 		return typeReservation;
@@ -82,7 +91,5 @@ public class Reservation {
 	public void setTypeReservation(String typeReservation) {
 		this.typeReservation = typeReservation;
 	}
-    public void setApprenant(Apprenant apprenant) {
-        this.apprenant = apprenant;
-    }
+  
 }

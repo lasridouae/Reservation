@@ -20,36 +20,36 @@ import com.webapp.youcode.service.ReservationService;
 @Controller
 public class AdminController {
 
-	@Autowired
-	private ReservationService reservationService;
-	private UsersRepository userRepository;
-	private ReservationRepository reservationRespsitory;
+//	@Autowired
+//	private ReservationService reservationService;
+//	private UsersRepository userRepository;
+//	private ReservationRepository reservationRespsitory;
 
 	
-	@Autowired
-	private UsersDao usersDao;
-	private ReservationDao reservationDao;
+//	@Autowired
+//	private UsersDao usersDao;
+//	private ReservationDao reservationDao;
+//	
+//	
+//	@RequestMapping("/adminPage")
+//	public String showAdmin(Model model, HttpSession session){
+//		if (session.getAttribute("role") != null && session.getAttribute("role").equals("admin")) {
+//			List<Users> users = usersDao.getAll();
+//			
+//			List<Reservation> reservations = reservationDao.getAllReservation();
+//			
+//			model.addAttribute("reservations",reservations);
+//			
+//			model.addAttribute("users",users);
+//			
+//			return "adminPage";
+//		}else {
+//			return "redirect:/";
+//		}
+//		
+//	}
 	
-	
-	@RequestMapping("/adminPage")
-	public String showAdmin(Model model, HttpSession session){
-		if (session.getAttribute("role") != null && session.getAttribute("role").equals("admin")) {
-			List<Users> users = usersDao.getAll();
-			
-			List<Reservation> reservations = reservationDao.getAllReservation();
-			
-			model.addAttribute("reservations",reservations);
-			
-			model.addAttribute("users",users);
-			
-			return "adminPage";
-		}else {
-			return "redirect:/";
-		}
-		
-	}
-	
-
+}
 	
 	
 	
@@ -69,8 +69,7 @@ public class AdminController {
 //
 //	        return "Reservation";
 //	    }
-
-}//	@RequestMapping(value = "/adminPage", method = RequestMethod.GET)
+//	@RequestMapping(value = "/adminPage", method = RequestMethod.GET)
 //	public String admin(@ModelAttribute Users users, Model model) {
 //
 //		List<Users> user = userRepository.getAll();

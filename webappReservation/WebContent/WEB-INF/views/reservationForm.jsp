@@ -12,10 +12,12 @@
 </head>
 <body>
 
-<h2>hello {userNom}</h2>
+<h2>Welcome <%= request.getSession().getAttribute("userNom") %> <%= request.getSession().getAttribute("userPrenom") %></h2>
 	<div align="center">
-		<h1>Reseravtion</h1>
+		<h1>Reservation</h1>
 		<form:form action="saveReservation" method="post" modelAttribute="reservation">
+		
+		
 		
 		   <div class="form-group col-md-4">
       <label for="inputState">Type</label>

@@ -48,20 +48,7 @@ public class RegistreController {
 	        return "redirect:/login";
 		
 	}
-//		String userPasword = request.getParameter("pass");
-//		if(userPasword.equals(users.getUserPassword())) {
-//			Roles role = usersDao.getRoleById(2);
-//			users.setRole(role);	
-//			apprenantDao.create(users);
-//			System.out.println("register done");
-//			
-//			return "redirect:/";
-//			
-//		}else
-//			
-//		return "login";
-//		
-//	}
+
 	
 
 

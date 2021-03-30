@@ -18,30 +18,32 @@ import com.webapp.youcode.repository.UsersRepository;
 public class LoginController {
 	@Autowired
 	private UsersRepository userRepository;
-	private Users users;
+	static  Users user = new Users();
 	
 	 //get login page
 	@RequestMapping(value="/login")
 	public String login(Model model) throws IOException{
-		model.addAttribute("users", users);
+		model.addAttribute("users", user);
 		return "login";
 	}
 	
 	@RequestMapping(value ="/loginAcces", method = RequestMethod.POST)
-	public String login(@ModelAttribute Users users, HttpSession session)
+	public String login(@ModelAttribute Users users, Model model ,HttpSession session)
 	{
 
 //		UsersRepository userRepository=new UsersRepository();
 
 		users=  userRepository.getByEmail(users.getUserEmail(),users.getUserPassword());
+		user = users;
 		if (users != null && users.getUserPassword().equals(users.getUserPassword()) == true) {
 			session.setAttribute("id",users.getUserId());
-			session.setAttribute("nom",users.getUserNom());
+			session.setAttribute("userNom",users.getUserNom());
 			session.setAttribute("userPrenom",users.getUserPrenom());
 			if (users.getRole().getRoleName().equals("admin")) {
-				return "redirect:/admin";
-			} else if (users.getRole().getRoleName().equals("apprenant")) {
 				return "redirect:/reservation";
+			} else if (users.getRole().getRoleName().equals("apprenant")) {
+				model.addAttribute("users",users);
+				return "redirect:/resList";
 			}
 			System.out.println("safi rak tlogiti ");
 		}

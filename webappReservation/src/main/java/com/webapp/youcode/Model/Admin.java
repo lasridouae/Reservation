@@ -12,7 +12,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 public class Admin extends Users implements Serializable {
 
     @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "idUsers")
+    @JoinColumn(name = "user_id", referencedColumnName = "userId")
     private Users users;
 
     public Admin() {

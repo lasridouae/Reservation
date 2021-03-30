@@ -1,6 +1,7 @@
 package com.webapp.youcode.Controllers;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,11 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.webapp.youcode.Dao.ReservationDao;
+import com.webapp.youcode.Dao.UsersDao;
+import com.webapp.youcode.Model.Apprenant;
 import com.webapp.youcode.Model.Reservation;
-import com.webapp.youcode.repository.ReservationRepository;
+import com.webapp.youcode.Model.Users;
 import com.webapp.youcode.service.ReservationService;
 
 @Controller
@@ -22,10 +26,11 @@ public class ReservationController {
 	@Autowired
 	private ReservationDao reservationDao ;
 	
-	private ReservationRepository reservationRespsitory;
+	private UsersDao usersDao;
 
 	@Autowired
 	private ReservationService reservationService ;
+	
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -48,10 +53,15 @@ public class ReservationController {
 	        return theModel;
 	    }
 	   @RequestMapping(value = "/saveReservation", method = RequestMethod.POST)
-	    public ModelAndView saveReservation(@ModelAttribute Reservation reservation) {
+	    public ModelAndView saveReservation(@ModelAttribute Reservation reservation) { 
+		   reservation.setApprenant((Apprenant) LoginController.user);
+		   System.out.println(reservation.getApprenant().getUserEmail());
 	            reservationService.addReservation(reservation);
+//	            System.out.println("apprenant :"+reservation.getApprenant().getUserPrenom());
 	        return new ModelAndView("redirect:/");
 	    }
+	
+ 
 	   
 //	   @RequestMapping(value = "/admin" )
 //		public ModelAndView listRes(ModelAndView theModel) throws IOException {
