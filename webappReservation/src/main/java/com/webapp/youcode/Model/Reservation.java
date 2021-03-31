@@ -35,11 +35,6 @@ public class Reservation {
 		this.apprenant = apprenant;
 	}
     
-//    public Reservation(Date dateReservation, Apprenant apprenant) {
-//		super();
-//		this.dateReservation = dateReservation;
-//		this.apprenant = apprenant;
-//	}
 
 
 	public Reservation(Date dateReservation, boolean confirmation, Apprenant apprenant) {

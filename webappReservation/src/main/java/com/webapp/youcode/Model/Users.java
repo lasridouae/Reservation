@@ -29,6 +29,8 @@ public class Users implements Serializable {
     private  String userEmail;
     @Column(nullable = false)
     private  String userPassword;
+    @Column(nullable = false)
+    private boolean accepte;
     @ManyToOne
     @JoinColumn(name = "id_role")
     private  Roles role;
@@ -36,8 +38,16 @@ public class Users implements Serializable {
     //Constructors
 
     public Users() {}
+ 
 
-    public Users(String userNom, String userPrenom, String userEmail, String userPassword) {
+    public Users(Long userId, boolean accepte) {
+		super();
+		this.userId = userId;
+		this.accepte = accepte;
+	}
+
+
+	public Users(String userNom, String userPrenom, String userEmail, String userPassword,boolean accepte) {
         this.userNom = userNom;
         this.userPrenom = userPrenom;
         this.userEmail = userEmail;
@@ -52,7 +62,19 @@ public class Users implements Serializable {
         this.role = role;
     }
 
-    public Users(Long userId, String userNom, String userPrenom, String userEmail, String userPassword, Roles role) {
+    public Users(String userNom, String userPrenom, String userEmail, String userPassword, boolean accepte,
+			Roles role) {
+		super();
+		this.userNom = userNom;
+		this.userPrenom = userPrenom;
+		this.userEmail = userEmail;
+		this.userPassword = userPassword;
+		this.accepte = accepte;
+		this.role = role;
+	}
+
+
+	public Users(Long userId, String userNom, String userPrenom, String userEmail, String userPassword, Roles role) {
         this.userId = userId;
         this.userNom = userNom;
         this.userPrenom = userPrenom;
@@ -109,6 +131,17 @@ public class Users implements Serializable {
     public void setRole(Roles role) {
         this.role = role;
     }
+
+
+	public boolean isAccepte() {
+		return accepte;
+	}
+
+
+	public boolean setAccepte(boolean accepte) {
+		return this.accepte = accepte;
+	}
+
 
 
 }

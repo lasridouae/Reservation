@@ -62,14 +62,7 @@ public class ReservationController {
 	    }
 	
  
-	   
-//	   @RequestMapping(value = "/admin" )
-//		public ModelAndView listRes(ModelAndView theModel) throws IOException {
-//		 List<Reservation> listReservation = reservationService.getAllReservation();
-//	        theModel.addObject("listReservation", listReservation);
-//	        theModel.setViewName("admin");
-//	        return theModel;
-//		}
+
        @RequestMapping(value = "/deleteReservation", method = RequestMethod.POST)
        public String deleteReservation(HttpServletRequest request){
             Long id = Long.valueOf(request.getParameter("id"));
@@ -86,16 +79,6 @@ public class ReservationController {
         reservationService.updateReservation(reservation);
         return "redirect:/reservation";
     }
-//	
-//	
-//	//controller method to process the reservation form
-//	@RequestMapping(value ="/reservationForm", method = RequestMethod.POST)
-//	public String addReservation(@ModelAttribute("reservation") Reservation reservation) {
-//		reservationDao.create(reservation);
-//		System.out.println("reservation added");
-//		return "redirect:/reservation ";
-//	}
-//	
 
 
 }

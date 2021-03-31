@@ -9,6 +9,9 @@
 	crossorigin="anonymous">
 <body>
 	<h2>Welcome <%= request.getSession().getAttribute("userNom") %></h2>
+	
+	<%-- <%@ include file ="users.jsp"%> --%>
+	
 	<div align="center">
 		<h1>Reservation list</h1>
 
@@ -61,6 +64,6 @@
 		</table>
 	</div>
 
-	<a href="logout" type="button" class="btn btn-outline-dark btn-sm"">logout</a>
+	<a href="logout" type="button" class="btn btn-outline-dark btn-sm">logout</a>
 </body>
 </html>

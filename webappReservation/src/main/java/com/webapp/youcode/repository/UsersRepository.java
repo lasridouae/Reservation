@@ -33,6 +33,21 @@ public class UsersRepository {
 	        }
 	    }
 	
+	@Transactional
+	   public Users updateCompte(Users users) {
+		   Session session = sessionFactory.getCurrentSession();
+	   
+	        users = session.find(Users.class, users.getUserId());
+	        if (users != null){
+	            users.setAccepte(users.isAccepte());
+	            System.out.println("update");
+	        }else{
+	            System.out.println("User does not exist");
+	        }
+	       
+	        return users;
+	    }
+	
 
 
 }

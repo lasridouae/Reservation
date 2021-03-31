@@ -8,27 +8,48 @@
    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Satisfy" rel="stylesheet">
 
-
-
-<%-- <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/style.css"> 
+<!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/style.css"> 
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/vendor/boxicons/css/boxicons.min.css"> 
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/vendor/icofont/icofont.min.css"> 
-<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/img/homePage.jpg">  --%>
-  
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/img/homePage.jpg">   
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 
 <header id="header" class="fixed-top  d-flex justify-content-center align-items-center header-transparent">
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      JoGeek
+    </div>
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  
+  <div class="nav-links">
+    <a href="home" >Home</a>
+    <a href="register" >Register</a>
+    <a href="login" >Login</a>
+  </div>
+</div>
 
-    <nav class="nav-menu d-none d-lg-block">
+ <!--    <nav class="nav-menu d-none d-lg-block">
         <ul>
             <li class="active"><a href="home">Home</a></li>
             <li><a href="reservation">Reservation</a></li>
             <li><a href="login">Login</a></li>
             <li><a href="register">Register</a></li>
         </ul>
-    </nav><!-- .nav-menu -->
+    </nav> -->
+    <!-- .nav-menu -->
 
 </header><!-- End Header -->
 
@@ -58,8 +79,8 @@
         </div>
     </div>
 </footer><!-- End Footer -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <!-- jquery -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<%-- <link  rel="stylesheet" href="${ pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js">
+<link  rel="stylesheet" href="${ pageContext.request.contextPath }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js">
+ --%>
 </body>
 </html>
