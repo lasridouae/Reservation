@@ -41,20 +41,20 @@
 						<td>${reservation.idReservation}</td>
 						<td>${reservation.dateReservation}</td>
 						<td>${reservation.typeReservation}</td>
-						<td>${reservation.confirmation}</td>
+						<td>
+						<c:if test="${reservation.confirmation == true}" var="variable">
+   							 <p>confirmer</p>
+						</c:if>
+						<c:if test="${reservation.confirmation == false}" var="variable">
+   							 <p>non confirmer</p>
+						</c:if>
+						</td>
 
 
 
-						<td class="d-flex flex-row"><c:if
-								test="${reservation.confirmation == true}">
-								<form action="deleteReservation" method="post">
-									<input type="hidden" value="${reservation.idReservation}"
-										name="id" class="form-control" /> <input type="submit"
-										value="Supprimer" class="btn btn-danger  btn-sm">
-								</form>
-							</c:if>
-
-							</form> <c:if test="${reservation.confirmation == false}">
+						<td class="d-flex flex-row">
+						
+							<c:if test="${reservation.confirmation == false}">
 								<form action="ApprouveReservation" method="post">
 									<input type="hidden" value="${reservation.idReservation}"
 										name="id" class="form-control" /> <input type="submit"

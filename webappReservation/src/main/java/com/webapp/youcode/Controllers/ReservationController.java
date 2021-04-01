@@ -26,16 +26,12 @@ public class ReservationController {
 	@Autowired
 	private ReservationDao reservationDao ;
 	
+	@Autowired
 	private UsersDao usersDao;
 
 	@Autowired
 	private ReservationService reservationService ;
 	
-
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-
 	@RequestMapping(value = "/reservation" )
 	public ModelAndView listReservation(ModelAndView theModel) throws IOException {
 	 List<Reservation> listReservation = reservationService.getAllReservation();
@@ -44,7 +40,7 @@ public class ReservationController {
         return theModel;
 	}
 	
-	
+	//apprenant
 	  @RequestMapping(value = "/newReservation", method = RequestMethod.GET)
 	    public ModelAndView newRes(ModelAndView theModel) {
 	        Reservation reservation = new Reservation();
@@ -57,21 +53,8 @@ public class ReservationController {
 		   reservation.setApprenant((Apprenant) LoginController.user);
 		   System.out.println(reservation.getApprenant().getUserEmail());
 	            reservationService.addReservation(reservation);
-//	            System.out.println("apprenant :"+reservation.getApprenant().getUserPrenom());
 	        return new ModelAndView("redirect:/");
 	    }
-	
- 
-
-       @RequestMapping(value = "/deleteReservation", method = RequestMethod.POST)
-       public String deleteReservation(HttpServletRequest request){
-            Long id = Long.valueOf(request.getParameter("id"));
-            Reservation reservation = reservationService.getReservation(id);
-            reservation.setConfirmation(false);
-            reservationService.updateReservation(reservation);
-            return "redirect:/reservation";
-       }
-
 
     @RequestMapping(value = "/ApprouveReservation", method = RequestMethod.POST)
     public String accepterReservation(HttpServletRequest request){

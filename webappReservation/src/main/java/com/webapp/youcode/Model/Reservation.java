@@ -22,9 +22,16 @@ public class Reservation {
     @JoinColumn(name = "userId")
     private Apprenant apprenant;
 
-    public Reservation() {
+  
+  
+//    if (rejeter == RESULT_OK) {
+//    	confirmation = false;
+//    }else if (accepter == RESULT_OK){
+//    	confirmation = true;
+//    }
+    
+ public Reservation() {
     }
-
 	public Reservation(Long idReservation, Date dateReservation, boolean confirmation, String typeReservation,
 			Apprenant apprenant) {
 		super();

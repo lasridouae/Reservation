@@ -19,8 +19,6 @@ public class AdminController {
 	private UsersService usersService ;
 	
 	
-
-	
 	@RequestMapping(value = "/users" )
 	public ModelAndView listUsers(ModelAndView theModel) throws IOException {
 		List<Users> listUsers = usersService.getAll();
