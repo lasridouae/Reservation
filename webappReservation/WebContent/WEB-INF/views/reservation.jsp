@@ -8,10 +8,12 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <body>
-	<h2>Welcome <%= request.getSession().getAttribute("userNom") %></h2>
-	
+	<h2>
+		Welcome
+		<%= request.getSession().getAttribute("userNom") %></h2>
+
 	<%-- <%@ include file ="users.jsp"%> --%>
-	
+
 	<div align="center">
 		<h1>Reservation list</h1>
 
@@ -25,7 +27,7 @@
 					<th>Date</th>
 					<th>typeReservation</th>
 					<th>confirmation</th>
-					
+
 					<th>Action</th>
 
 				</tr>
@@ -33,29 +35,32 @@
 			<tbody>
 				<c:forEach var="reservation" items="${listReservation}">
 					<tr>
-					    <td>${reservation.apprenant.userId}</td>
+						<td>${reservation.apprenant.userId}</td>
 						<td>${reservation.apprenant.userNom}</td>
 						<td>${reservation.apprenant.userPrenom}</td>
 						<td>${reservation.idReservation}</td>
 						<td>${reservation.dateReservation}</td>
 						<td>${reservation.typeReservation}</td>
 						<td>${reservation.confirmation}</td>
-						
-						
 
-						<td class="d-flex flex-row">
-							<form action="deleteReservation" method="post">
-								<input type="hidden" value="${reservation.idReservation}"
-									name="id" class="form-control" /> <input type="submit"
-									value="Supprimer" class="btn btn-danger  btn-sm">
+
+
+						<td class="d-flex flex-row"><c:if
+								test="${reservation.confirmation == true}">
+								<form action="deleteReservation" method="post">
+									<input type="hidden" value="${reservation.idReservation}"
+										name="id" class="form-control" /> <input type="submit"
+										value="Supprimer" class="btn btn-danger  btn-sm">
+								</form>
+							</c:if>
+
 							</form> <c:if test="${reservation.confirmation == false}">
 								<form action="ApprouveReservation" method="post">
 									<input type="hidden" value="${reservation.idReservation}"
 										name="id" class="form-control" /> <input type="submit"
 										value="Accepter" class="btn btn-primary  btn-sm">
 								</form>
-							</c:if>
-						</td>
+							</c:if></td>
 
 
 					</tr>

@@ -17,41 +17,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-
-<header id="header" class="fixed-top  d-flex justify-content-center align-items-center header-transparent">
-<div class="nav">
-  <input type="checkbox" id="nav-check">
-  <div class="nav-header">
-    <div class="nav-title">
-      JoGeek
-    </div>
-  </div>
-  <div class="nav-btn">
-    <label for="nav-check">
-      <span></span>
-      <span></span>
-      <span></span>
-    </label>
-  </div>
-  
-  <div class="nav-links">
-    <a href="home" >Home</a>
-    <a href="register" >Register</a>
-    <a href="login" >Login</a>
-  </div>
-</div>
-
- <!--    <nav class="nav-menu d-none d-lg-block">
-        <ul>
-            <li class="active"><a href="home">Home</a></li>
-            <li><a href="reservation">Reservation</a></li>
-            <li><a href="login">Login</a></li>
-            <li><a href="register">Register</a></li>
-        </ul>
-    </nav> -->
-    <!-- .nav-menu -->
-
-</header><!-- End Header -->
+<%@ include file ="navBar.jsp"%> 
 
 <!-- ======= Hero Section ======= -->
 <section id="hero">

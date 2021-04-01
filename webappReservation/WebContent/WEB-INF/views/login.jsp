@@ -153,6 +153,7 @@ body{
 	href="${ pageContext.request.contextPath }/resources/style.css"> --%>
 	</head>
 <body> 
+
   <form class="register-form" id="login-form" action="/webappReservation/loginAcces" method="post">
      <div class="body"></div>
 		<div class="grad"></div>

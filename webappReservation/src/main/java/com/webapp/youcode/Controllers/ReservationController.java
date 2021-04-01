@@ -66,7 +66,9 @@ public class ReservationController {
        @RequestMapping(value = "/deleteReservation", method = RequestMethod.POST)
        public String deleteReservation(HttpServletRequest request){
             Long id = Long.valueOf(request.getParameter("id"));
-            reservationService.deleteReservation(id);
+            Reservation reservation = reservationService.getReservation(id);
+            reservation.setConfirmation(false);
+            reservationService.updateReservation(reservation);
             return "redirect:/reservation";
        }
 
