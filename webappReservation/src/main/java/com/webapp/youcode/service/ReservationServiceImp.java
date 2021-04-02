@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.webapp.youcode.Dao.ReservationDao;
 import com.webapp.youcode.Model.Reservation;
+import com.webapp.youcode.repository.ReservationRepository;
 
 
 @Service
@@ -15,6 +16,8 @@ import com.webapp.youcode.Model.Reservation;
 public class ReservationServiceImp  implements ReservationService{
 	 @Autowired
 	    private ReservationDao reservationDao;
+	 @Autowired
+	 private ReservationRepository reservationRepository;
 
 	@Override
 	   @Transactional
@@ -52,5 +55,12 @@ public class ReservationServiceImp  implements ReservationService{
 	    public void setReservationDao(ReservationDao reservationDao) {
 	        this.reservationDao = reservationDao;
 	    }
+
+		@Override
+		@Transactional
+		public List<Reservation> getAllById(long id) {
+			// TODO Auto-generated method stub
+			return reservationRepository.getAllById(id);
+		}
 
 }

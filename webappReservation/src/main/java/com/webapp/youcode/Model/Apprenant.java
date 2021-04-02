@@ -56,15 +56,15 @@ public class Apprenant extends Users implements Serializable {
         this.reservations = reservations;
     }
 
-//    public void addReservation(Reservation reservation) {
-//        if (reservations == null) {
-//            reservations = new ArrayList<Reservation>();
-//        }
-//
-//        reservations.add(reservation);
-//
-//        reservation.setApprenant(this);
-//    }
+    public void addReservation(Reservation reservation) {
+        if (reservations == null) {
+            reservations = new ArrayList<Reservation>();
+        }
+
+        reservations.add(reservation);
+
+        reservation.setApprenant(this);
+    }
 //    
 
 

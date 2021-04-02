@@ -1,12 +1,10 @@
 package com.webapp.youcode.repository;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import javax.persistence.Query;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -17,31 +15,20 @@ import com.webapp.youcode.Model.Users;
 public class ReservationRepository {
 
 	@Autowired
-
 	private SessionFactory sessionFactory;
-
-	public List<Reservation> getAllById(long id) {
-
-		Session session = sessionFactory.getCurrentSession();
-
-		List reservations = new ArrayList<Reservation>();
-		Query query = session.createQuery(" from Reservation u  where u.user.idUser =:id");
-		query.setParameter("id", id);
-
-		try {
-
-			Users user = (Users) query.getSingleResult();
-//			reservations = user.getReservation();
-
-			reservations = query.getResultList();
-		} finally {
-			if (session != null) {
-				session.close();
-			}
-
-		}
-		return reservations;
+	
+	
+	public List<Reservation> getResByUser(long userId ){
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+        Query query = session.createQuery("select u from Apprenant u JOIN FETCH u.reservations r where u.userId =:userId ",Users.class);
+        query.setParameter("userId", userId);
+        List<Reservation> list = query.list();
+        session.getTransaction().commit();
+        return list;
+    }
+	
 	}
 
 	
-}
+

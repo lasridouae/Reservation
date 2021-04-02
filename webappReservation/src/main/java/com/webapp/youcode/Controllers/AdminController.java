@@ -1,6 +1,7 @@
 package com.webapp.youcode.Controllers;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ public class AdminController {
 		List<Users> listUsers = usersService.getAll();
         theModel.addObject("listUsers", listUsers);
         theModel.setViewName("users");
+        
         return theModel;
 	}
 

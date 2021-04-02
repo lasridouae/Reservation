@@ -10,7 +10,7 @@
 
 <!-- jquery -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/style.css"> 
+<link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/style.css?<%=System.currentTimeMillis()%>"> 
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/vendor/boxicons/css/boxicons.min.css"> 
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/vendor/icofont/icofont.min.css"> 
 <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/img/homePage.jpg">   
@@ -45,8 +45,8 @@
         </div>
     </div>
 </footer><!-- End Footer -->
-<%-- <link  rel="stylesheet" href="${ pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js">
-<link  rel="stylesheet" href="${ pageContext.request.contextPath }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js">
- --%>
+<link  rel="stylesheet" href="${ pageContext.request.contextPath }/resources/vendor/jquery/jquery.min.js">
+<link  rel="stylesheet" href="${ pageContext.request.contextPath }/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"> --%>
+
 </body>
 </html>

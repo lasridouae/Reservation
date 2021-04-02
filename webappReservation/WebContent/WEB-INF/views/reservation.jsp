@@ -8,11 +8,11 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <body>
+<%@ include file ="navBar.jsp"%>  
 	<h2>
 		Welcome
 		<%= request.getSession().getAttribute("userNom") %></h2>
 
-	<%-- <%@ include file ="users.jsp"%> --%>
 
 	<div align="center">
 		<h1>Reservation list</h1>
@@ -46,7 +46,7 @@
    							 <p>confirmer</p>
 						</c:if>
 						<c:if test="${reservation.confirmation == false}" var="variable">
-   							 <p>non confirmer</p>
+   							 <p>rejeter</p>
 						</c:if>
 						</td>
 

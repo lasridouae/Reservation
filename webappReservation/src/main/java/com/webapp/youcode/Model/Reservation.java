@@ -1,6 +1,5 @@
 package com.webapp.youcode.Model;
 import java.sql.Date;
-import java.util.Collection;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,13 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Reservation {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Long idReservation;
+  
     private Date dateReservation;
     private boolean confirmation;
     private String typeReservation;
@@ -24,11 +23,7 @@ public class Reservation {
 
   
   
-//    if (rejeter == RESULT_OK) {
-//    	confirmation = false;
-//    }else if (accepter == RESULT_OK){
-//    	confirmation = true;
-//    }
+
     
  public Reservation() {
     }

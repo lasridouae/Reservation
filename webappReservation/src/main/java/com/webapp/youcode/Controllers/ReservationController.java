@@ -1,30 +1,32 @@
 package com.webapp.youcode.Controllers;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.webapp.youcode.Dao.ReservationDao;
 import com.webapp.youcode.Dao.UsersDao;
 import com.webapp.youcode.Model.Apprenant;
 import com.webapp.youcode.Model.Reservation;
-import com.webapp.youcode.Model.Users;
+import com.webapp.youcode.repository.ReservationRepository;
 import com.webapp.youcode.service.ReservationService;
 
 @Controller
 public class ReservationController {
 	@Autowired
 	private ReservationDao reservationDao ;
+	@Autowired
+	ReservationRepository reservationRepository;
 	
 	@Autowired
 	private UsersDao usersDao;
@@ -42,7 +44,7 @@ public class ReservationController {
 	
 	//apprenant
 	  @RequestMapping(value = "/newReservation", method = RequestMethod.GET)
-	    public ModelAndView newRes(ModelAndView theModel) {
+	    public ModelAndView newRes(ModelAndView theModel, Model model) {
 	        Reservation reservation = new Reservation();
 	         theModel.addObject("reservation", reservation);
 	        theModel.setViewName("reservationForm");
@@ -53,7 +55,7 @@ public class ReservationController {
 		   reservation.setApprenant((Apprenant) LoginController.user);
 		   System.out.println(reservation.getApprenant().getUserEmail());
 	            reservationService.addReservation(reservation);
-	        return new ModelAndView("redirect:/");
+	        return new ModelAndView("redirect:/resList");
 	    }
 
     @RequestMapping(value = "/ApprouveReservation", method = RequestMethod.POST)
@@ -64,6 +66,18 @@ public class ReservationController {
         reservationService.updateReservation(reservation);
         return "redirect:/reservation";
     }
+    
 
+    
+	@RequestMapping(value = "/reser" )
+	public ModelAndView list(ModelAndView theModel ,Apprenant reservation, HttpSession session, Model model) throws IOException {
+		Long userId = (Long) session.getAttribute("id");
+		List<Reservation> reservations = reservationRepository.getResByUser((long) userId);
+     	System.out.println(reservations);
+		model.addAttribute("list", reservations);
+        theModel.setViewName("resList");
+        return theModel;
+	}
+	
 
 }

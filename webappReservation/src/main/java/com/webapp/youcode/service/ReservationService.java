@@ -15,6 +15,8 @@ package com.webapp.youcode.service;
 	    public Reservation getReservation(long idReservation);
 	 
 	    public Reservation updateReservation(Reservation Reservation);
+	    
+	    public List<Reservation> getAllById(long id);
 
 	}
 

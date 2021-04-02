@@ -1,24 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<%-- <link rel="stylesheet" type="text/css" href="${ pageContext.request.contextPath }/resources/style.css">  --%>
 
 <style>
-
-/*--------------------------------------------------------------
-# Navigation Menu
---------------------------------------------------------------*/
-/* * {
-  box-sizing: border-box;
-} */
-
-/* body {
-  margin: 0px;
-  font-family: 'segoe ui';
-} */
-
 .nav {
   height: 50px;
   width: 100%;
@@ -145,15 +130,6 @@
   </div>
 </div>
 
- <!--    <nav class="nav-menu d-none d-lg-block">
-        <ul>
-            <li class="active"><a href="home">Home</a></li>
-            <li><a href="reservation">Reservation</a></li>
-            <li><a href="login">Login</a></li>
-            <li><a href="register">Register</a></li>
-        </ul>
-    </nav> -->
-    <!-- .nav-menu -->
 
 </header><!-- End Header -->
 </body>

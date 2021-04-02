@@ -2,11 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-<%@ include file ="navBar.jsp"%> 
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Reservation</title>
 <style type="text/css">
-
+/* 
 body{
 	margin: 0;
 	padding: 0;
@@ -16,7 +16,7 @@ body{
 	font-family: Arial;
 	font-size: 12px;
 }
-
+ */
 .body{
 	position: absolute;
 	top: -20px;
@@ -176,6 +176,7 @@ body{
 </head>
 
 <body>
+
 <form:form action="processForm" method="post" modelAttribute="users">
 	<div class="body"></div>
 		<div class="grad"></div>
