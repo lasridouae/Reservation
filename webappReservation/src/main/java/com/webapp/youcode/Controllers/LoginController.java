@@ -48,14 +48,14 @@ public class LoginController {
 			session.setAttribute("id",users.getUserId());
 			session.setAttribute("userNom",users.getUserNom());
 			session.setAttribute("userPrenom",users.getUserPrenom());
-			if (users.getRole().getRoleName().equals("admin")) {
-				
-				return "redirect:/admin";
-			} else if (users.getRole().getRoleName().equals("apprenant")) {
-				model.addAttribute("users",users);
+			session.setAttribute("role",user.getRole().getRoleName());
+			if (session.getAttribute("role").equals("admin")) {
+				return "redirect:/register";
+			} else if (session.getAttribute("role").equals("apprenant")) {
+//				model.addAttribute("users",users);
 				return "redirect:/reser";
 			}
-			System.out.println("safi rak tlogiti ");
+			System.out.println("login succeed ");
 		}
 		return "redirect:/";
 	}

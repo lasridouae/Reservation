@@ -75,19 +75,16 @@ body {
 	</h3>
 	<table border="1">
 
-		<th>userNom</th>
-		<th>userPrenom</th>
+		
 		<th>DateReservation</th>
 		<th>TypeReservation</th>
 		<th>Confirmation</th>
 
-		<c:forEach var="reservations" items="${list}">
+		<c:forEach var="reservation" items="${list}">
 			<tr>
-		   <td>${reservations.userId}</td>
-				<td>${reservations.userNom}</td>
-				<td>${reservations.userPrenom}</td>
-			<td>${reservation.reservation.typeReservation}</td>
-				<td>${reservation.reservation.confirmation}</td> 
+				<td>${reservation.dateReservation}</td> 
+			    <td>${reservation.typeReservation}</td> 
+				<td>${reservation.confirmation}</td>  
 			</tr>
 		</c:forEach>
 	</table>

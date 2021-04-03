@@ -23,6 +23,7 @@ import com.webapp.youcode.service.ReservationService;
 
 @Controller
 public class ReservationController {
+	private static final int Reservation = 0;
 	@Autowired
 	private ReservationDao reservationDao ;
 	@Autowired
@@ -70,11 +71,12 @@ public class ReservationController {
 
     
 	@RequestMapping(value = "/reser" )
-	public ModelAndView list(ModelAndView theModel ,Apprenant reservation, HttpSession session, Model model) throws IOException {
+	public ModelAndView list(ModelAndView theModel , HttpSession session, Model model, Apprenant apprenant) throws IOException {
 		Long userId = (Long) session.getAttribute("id");
 		List<Reservation> reservations = reservationRepository.getResByUser((long) userId);
+		apprenant.setReservation(reservations);
      	System.out.println(reservations);
-		model.addAttribute("list", reservations);
+		model.addAttribute("list", reservations);	 
         theModel.setViewName("resList");
         return theModel;
 	}
