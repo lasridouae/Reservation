@@ -8,11 +8,23 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <body>
-<%@ include file ="navBar.jsp"%>  
-	<h2>
-		Welcome
-		<%= request.getSession().getAttribute("userNom") %></h2>
+<header>
+		<nav class="navbar navbar-expand-md navbar-dark"
+			style="background-color: blue">
+			<div>
+				<a href="" class="navbar-brand">Welcome <%= request.getSession().getAttribute("userNom") %>
+					<%= request.getSession().getAttribute("userPrenom") %>
+				</a>
+			</div>
 
+			<ul class="navbar-nav">
+				<li>
+				<a href="users"  class="nav-link">Users</a>
+				</li>
+				<li><a href="logout" class="nav-link">Logout</a></li>
+			</ul>
+		</nav>
+	</header>
 
 	<div align="center">
 		<h1>Reservation list</h1>
@@ -69,6 +81,6 @@
 		</table>
 	</div>
 
-	<a href="logout" type="button" class="btn btn-outline-dark btn-sm">logout</a>
+	
 </body>
 </html>

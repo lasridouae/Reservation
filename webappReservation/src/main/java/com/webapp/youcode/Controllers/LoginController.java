@@ -26,7 +26,7 @@ public class LoginController {
 	private ReservationRepository reservationRepository;
 	static  Users user = new Users();
 	
-	 //get login page
+	// controller method to show the login form
 	@RequestMapping(value="/login")
 	public String login(Model model, HttpServletRequest request) throws IOException{
 		model.addAttribute("users", user);
@@ -34,6 +34,7 @@ public class LoginController {
 		return "login";
 	}
 	
+	// controller method to process the login form
 	@RequestMapping(value ="/loginAcces", method = RequestMethod.POST)
 	public String login(@ModelAttribute Users users,HttpServletRequest request, Model model)
 	{
@@ -50,7 +51,7 @@ public class LoginController {
 			session.setAttribute("userPrenom",users.getUserPrenom());
 			session.setAttribute("role",user.getRole().getRoleName());
 			if (session.getAttribute("role").equals("admin")) {
-				return "redirect:/register";
+				return "redirect:/users";
 			} else if (session.getAttribute("role").equals("apprenant")) {
 //				model.addAttribute("users",users);
 				return "redirect:/reser";

@@ -15,22 +15,18 @@ import com.webapp.youcode.service.UsersService;
 
 @Controller
 public class AdminController {
-	
+
 	@Autowired
-	private UsersService usersService ;
-	
-	
-	@RequestMapping(value = "/users" )
+	private UsersService usersService;
+
+	// affichage du list des users (les apprenants)
+	@RequestMapping(value = "/users")
 	public ModelAndView listUsers(ModelAndView theModel) throws IOException {
 		List<Users> listUsers = usersService.getAll();
-        theModel.addObject("listUsers", listUsers);
-        theModel.setViewName("users");
-        
-        return theModel;
+		theModel.addObject("listUsers", listUsers);
+		theModel.setViewName("users");
+
+		return theModel;
 	}
 
-
-	
-
 }
-	

@@ -7,9 +7,23 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <body>
-	<h2>
-		Welcome
-		<%= request.getSession().getAttribute("userNom") %></h2>
+<header>
+		<nav class="navbar navbar-expand-md navbar-dark"
+			style="background-color: blue">
+			<div>
+				<a href="" class="navbar-brand">Welcome <%= request.getSession().getAttribute("userNom") %>
+					<%= request.getSession().getAttribute("userPrenom") %>
+				</a>
+			</div>
+
+			<ul class="navbar-nav">
+				<li>
+				<a href="reservation"  class="nav-link">Reservation List</a>
+				</li>
+				<li><a href="logout" class="nav-link">Logout</a></li>
+			</ul>
+		</nav>
+	</header>
 	<div align="center">
 		<h1>Users list</h1>
 
@@ -37,6 +51,5 @@
 		</table>
 	</div>
 
-	<a href="logout" type="button" class="btn btn-outline-dark btn-sm"">logout</a>
 </body>
 </html>

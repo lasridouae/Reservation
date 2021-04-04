@@ -10,7 +10,50 @@
 <title>Reservation</title>
 </head>
 <body>
+<style>
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+.box select {
+  background-color: #0563af;
+  color: Black;
+  padding: 12px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.box::before {
+  content: "\f13a";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+/* .box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+} */
+
+.box select option {
+  padding: 30px;
+}
+</style>
 <h2>Welcome <%= request.getSession().getAttribute("userNom") %> <%= request.getSession().getAttribute("userPrenom") %></h2>
 	<div align="center">
 		<h1>Reservation</h1>
@@ -32,7 +75,7 @@
   <label for="item-3">Soir</label> --%>
 		
 		
-<div class="form-group col-md-4">
+<div  class="box" class="form-group col-md-4">
       <label for="inputState">Type</label>
       <form:select id="inputState" class="form-control" path="typeReservation">
         <form:option value ="weekend" >weekend</form:option>

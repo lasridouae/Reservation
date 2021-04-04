@@ -14,7 +14,6 @@ import com.webapp.youcode.Dao.ReservationDao;
 import com.webapp.youcode.Model.Reservation;
 
 @Repository
-//@Component("reservationDao")
 public class ReservationDaoImpl implements ReservationDao {
 
 	@Autowired

@@ -8,50 +8,7 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 <meta charset="ISO-8859-1">
-<style>
-body {
-	font-family: "Lato", sans-serif;
-}
 
-.sidenav {
-	height: 100%;
-	width: 160px;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: #111;
-	overflow-x: hidden;
-	padding-top: 20px;
-}
-
-.sidenav a {
-	padding: 6px 8px 6px 16px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-}
-
-.sidenav a:hover {
-	color: #f1f1f1;
-}
-
-.main {
-	margin-left: 160px; /* Same as the width of the sidenav */
-	font-size: 28px; /* Increased text to enable scrolling */
-	padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
-</style>
 </head>
 <body>
 	<header>
@@ -70,23 +27,32 @@ body {
 		</nav>
 	</header>
 	<h3>
-		<a href="newReservation">New Reservation</a>
+		<a href="newReservation" class="btn btn-success">New Reservation</a>
 
 	</h3>
-	<table border="1">
-
-		
+<table class="table table-bordered" border="1" border="1">
+			<thead>
+				<tr class="bg-primary">
 		<th>DateReservation</th>
 		<th>TypeReservation</th>
 		<th>Confirmation</th>
-
+</thead>
+<tbody>
 		<c:forEach var="reservation" items="${list}">
 			<tr>
 				<td>${reservation.dateReservation}</td> 
 			    <td>${reservation.typeReservation}</td> 
-				<td>${reservation.confirmation}</td>  
+					<td>
+						<c:if test="${reservation.confirmation == true}" var="variable">
+   							 <p>confirmer</p>
+						</c:if>
+						<c:if test="${reservation.confirmation == false}" var="variable">
+   							 <p>rejeter</p>
+						</c:if>
+						</td>  
 			</tr>
 		</c:forEach>
+		</tbody>
 	</table>
 </body>
 </html>

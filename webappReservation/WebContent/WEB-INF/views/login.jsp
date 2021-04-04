@@ -5,6 +5,10 @@
 
 <html>
 <head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 <style type="text/css">
 
 body{
@@ -100,7 +104,20 @@ body{
 	padding: 4px;
 	margin-top: 10px;
 }
-
+.reg{
+width: 253px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
 .login input[type=submit]{
 	width: 253px;
 	height: 35px;
@@ -165,14 +182,13 @@ body{
 				<input type="text" name="userEmail"  placeholder="userEmail"><br>
 				<input type="password"  name="userPassword" placeholder="password" ><br>
 				<input type="submit" value="Login">
-				<a href="register">register</a>
-				 <a href="logout" style="color: white ">logout</a>
+				<a href="register" class="reg" >register</a>
+			
 		</div>
          
           </form>  
 				 
-				<!-- <input type="text" name="userEmail"  placeholder="Email" >
-				<input type="password" name="userPassword" placeholder="password" > -->
+				
 				
 
 </body>
