@@ -59,7 +59,7 @@ public class ReservationController {
 		   reservation.setApprenant((Apprenant) LoginController.user);
 		   System.out.println(reservation.getApprenant().getUserEmail());
 	            reservationService.addReservation(reservation);
-	        return new ModelAndView("redirect:/resList");
+	        return new ModelAndView("redirect:/reser");
 	    }
 
  

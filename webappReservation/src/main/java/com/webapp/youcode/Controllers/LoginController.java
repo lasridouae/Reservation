@@ -30,7 +30,7 @@ public class LoginController {
 	@RequestMapping(value="/login")
 	public String login(Model model, HttpServletRequest request) throws IOException{
 		model.addAttribute("users", user);
-	
+		model.addAttribute("msg", "");
 		return "login";
 	}
 	

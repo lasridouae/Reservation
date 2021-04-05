@@ -179,11 +179,12 @@ width: 253px;
 		</div>
 		<br>
 		<div class="login" >
+			
 				<input type="text" name="userEmail"  placeholder="userEmail"><br>
 				<input type="password"  name="userPassword" placeholder="password" ><br>
 				<input type="submit" value="Login">
 				<a href="register" class="reg" >register</a>
-			
+			<p><c:out value="${msg}"></c:out></p>
 		</div>
          
           </form>  

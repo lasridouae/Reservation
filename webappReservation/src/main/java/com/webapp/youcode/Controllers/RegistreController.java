@@ -16,6 +16,8 @@ import com.webapp.youcode.Model.Users;
 
 @Controller
 public class RegistreController {
+	
+	private  Users user = new Users();
 
 	@Autowired
 	private UsersDao usersDao;
@@ -41,7 +43,9 @@ public class RegistreController {
 		apprenant.setRole(role);
 		usersDao.create(apprenant);
 		System.out.println("register done");
-		return "redirect:/login";
+		model.addAttribute("msg", "register done");
+		model.addAttribute("users", user);
+		return "login";
 
 	}
 

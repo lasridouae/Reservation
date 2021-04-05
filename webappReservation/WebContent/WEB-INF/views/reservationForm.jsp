@@ -59,21 +59,7 @@
 		<h1>Reservation</h1>
 		<form:form action="saveReservation" method="post" modelAttribute="reservation">
 		
-<%-- 		<form:input id="select-box-input" type="checkbox" path="typeReservation">
-		
-   <label for="select-box-input" class="select-box" tabindex="-1">
-
-  <form:input id="item-1" type="radio"  value ="Weekend" name="select" checked />
-  
-  <label for="item-1">Weekend</label>
-  <form:input id="item-2" type="radio" value ="Matin" name="select"/>
-  
-  <label for="item-2" >Matin</label>
-  
-  <form:input id="item-3" type="radio" value ="matin" name="select"/>
-  
-  <label for="item-3">Soir</label> --%>
-		
+F                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  		
 		
 <div  class="box" class="form-group col-md-4">
       <label for="inputState">Type</label>
