@@ -16,11 +16,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.webapp.youcode.Model.Apprenant;
 import com.webapp.youcode.Model.Reservation;
+import com.webapp.youcode.Model.Users;
 import com.webapp.youcode.repository.ReservationRepository;
 import com.webapp.youcode.service.ReservationService;
 
 @Controller
 public class ReservationController {
+	
+	private  Users user = new Users();
 
 	@Autowired
 	ReservationRepository reservationRepository;
@@ -65,13 +68,16 @@ public class ReservationController {
  
  //Historique de l'apprenant
 	@RequestMapping(value = "/reser" )
-	public ModelAndView list(ModelAndView theModel , HttpSession session, Apprenant apprenant) throws IOException {
+	public ModelAndView list(ModelAndView theModel , HttpSession session, Model model ,Apprenant apprenant) throws IOException {
 		Long userId = (Long) session.getAttribute("id");
 		List<Reservation> reservations = reservationRepository.getResByUser((long) userId);
 		apprenant.setReservation(reservations);
      	System.out.println(reservations);
      	theModel.addObject("list", reservations);	 
         theModel.setViewName("resList");
+        model.addAttribute("msg", "reservation Done");
+        model.addAttribute("users", user);
+      
         return theModel;
 	}
 	

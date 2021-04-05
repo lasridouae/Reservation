@@ -30,6 +30,8 @@
 		<a href="newReservation" class="btn btn-success">New Reservation</a>
 
 	</h3>
+	
+	<p><c:out value="${msg}"></c:out></p>
 <table class="table table-bordered" border="1" border="1">
 			<thead>
 				<tr class="bg-primary">
